@@ -1,0 +1,89 @@
+---
+outline: deep
+---
+
+# 绘制多段线条
+
+## Model 类的方法 - paintLine
+
+### 方法介绍
+
+UniCore 内置 Model 类，提供 paintLine 方法用于绘制多段线条。
+
+该方法需传入两个变量，一个是线条id，一个是线条坐标数组。
+
+其他可选变量的JSDoc形式如下：
+
+```js
+  /**
+   * 绘制线条
+   * @param {*} id 线条id
+   * @param {*} positions 线条位置 
+   * @param {*} height 线条高程
+   * @param {*} color 线条颜色
+   * @param {*} width 线条宽度
+   */
+```
+
+不妨通过代码示例在 Vue 中尝试一下：
+
+### 代码示例
+
+```vue
+<template>
+  <div id="unicoreContainer"></div>
+</template>
+
+<script>
+import { UniCore } from 'unicore-sdk'
+import { config } from 'unicore-sdk/unicore.config'
+import 'unicore-sdk/Widgets/widgets.css'
+
+export default {
+  // 生命周期 - 挂载完成（可以访问DOM元素）
+  mounted () {
+    this.init();
+  },
+
+  // 方法集合
+  methods: {
+
+    /**
+ * GIS引擎初始化
+ */
+    init () {
+
+      // 初始化UniCore
+
+      //  配置unicore的token
+      let accessToken = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJqdGkiOiIxNjEwMzI4My01MjBmLTQzYzktOGZiMS0wMDRhZjE0N2IyMGIiLCJpZCI6MTc1NzkyLCJpYXQiOjE3MTM3NzQ3OTh9.zU-R4MNvHr8rvn1v28PQfDImyutnpPF2lmEgGeSPckQ";
+      // 初始化unicore
+      let uniCore = new UniCore(config, accessToken);
+      uniCore.init("unicoreContainer");
+      window.uniCore = uniCore;
+      let viewer = window.viewer;
+
+      // 视角初始化
+      uniCore.position.buildingPosition(viewer, [113.12380548015745, 28.250758831850005, 700], -20, -45, 1);
+
+      uniCore.model.paintLine("lineID", [[113.12380548015745, 28.260758831850005], [113.12380548015745, 28.240758831850005], [113.12070548015745, 28.240758831850005]], 75, "#c3e88d", 5)
+    }
+
+  }
+
+}
+</script>
+
+```
+
+### 示例运行结果
+
+![Alt text](image-11.png)
+
+### 关键代码
+
+你可以通过修改 paintLine 中的变量查看修改这些变量带来的效果。
+
+```js
+uniCore.model.paintLine("lineID", [[113.12380548015745, 28.260758831850005], [113.12380548015745, 28.240758831850005], [113.12070548015745, 28.240758831850005]], 75, "#c3e88d", 5)
+```
