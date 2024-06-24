@@ -5,7 +5,13 @@ export default defineConfig({
   title: "通用图形引擎",
   description: "为 GIS + BIM 应用而生的通用图形引擎",
   themeConfig: {
-    // https://vitepress.dev/reference/default-theme-config
+    lastUpdated: {
+      text: '最近更新于',
+      formatOptions: {
+        dateStyle: 'full',
+        timeStyle: 'medium'
+      }
+    },
     nav: [
       { text: '首页', link: '/' },
       { text: '示例', link: '/md/fastcomponents/whatisit' },
