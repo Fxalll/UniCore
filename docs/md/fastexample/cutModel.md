@@ -63,7 +63,6 @@ export default {
       // 初始化unicore
       let uniCore = new UniCore(config, accessToken);
       uniCore.init("unicoreContainer");
-      
       let viewer = window.viewer;
 
       // 视角初始化
