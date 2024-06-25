@@ -65,7 +65,7 @@ export default {
     },
 
     mouseClick (e) {
-      alert(uniCore.position.screen2axis(window.viewer, e));
+      alert(window.uniCore.position.screen2axis(window.viewer, e));
     }
 
   }

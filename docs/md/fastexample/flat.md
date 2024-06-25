@@ -72,7 +72,7 @@ export default {
       // 初始化unicore
       let uniCore = new UniCore(config, accessToken);
       uniCore.init("unicoreContainer");
-      window.uniCore = uniCore;
+      
       let viewer = window.viewer;
 
       // 视角初始化
@@ -194,7 +194,7 @@ export default {
       // 初始化unicore
       let uniCore = new UniCore(config, accessToken);
       uniCore.init("unicoreContainer");
-      window.uniCore = uniCore;
+      
       let viewer = window.viewer;
 
       // 视角初始化

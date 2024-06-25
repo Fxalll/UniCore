@@ -158,7 +158,7 @@ export default {
             item.open = false
             item.name = ele.name
             item.checked = true
-            item.instanceid = ele.ElementID
+            item.instanceid = ele._BATCHID === undefined ? ele.ElementID : ele._BATCHID;
             this.nodes.push(item)
 
 
@@ -171,58 +171,6 @@ export default {
 
     },
 
-    // 信息树的点击操作
-    onClick (evt, treeId, treeNode) {
-
-      // 找到节点下所有的子节点
-      let findChild = function (array) {
-        for (let i = 0; i < array.length; i++) {
-          if (array[i].hasOwnProperty("children")) {
-            findChild(array[i].children)
-          } else {
-            allClickInstanceid.push(array[i].instanceid)
-          }
-        }
-      }
-
-      // 递归找到节点最上层父节点
-      let findParent = function (array) {
-        return array.getParentNode() === null ? array : findParent(array.getParentNode());
-      }
-
-      // 所点击到的所有elementID
-      let allClickInstanceid = []
-
-      if (treeNode.hasOwnProperty("children")) {
-        findChild(treeNode.children)
-      } else {
-        allClickInstanceid.push(treeNode.instanceid)
-      }
-
-      // 所展示的模型ID，依据为initNodes函数的index，据此找到allClickInstanceid对应的哪个模型，应对多模型的信息树情况
-      let parentId = findParent(treeNode).id;
-      let parentTileset = window.nodesList[parentId - 1].tileset;
-
-      // 找到与elementID关联的构件方法
-      parentTileset.tileVisible.addEventListener((tile) => {
-        let content = tile.content;
-        let featuresLength = content.featuresLength;
-
-        for (let i = 0; i < featuresLength; i++) {
-          let feature = content.getFeature(i);
-          let elementId = feature.getProperty("id")
-          if (allClickInstanceid.indexOf(elementId) !== -1) {
-            // 获得与elementID关联的构件feature
-            feature.show = true;
-
-          } else {
-            feature.show = false;
-          }
-        }
-      });
-
-      // 信息树的勾选操作
-    },
     onCheck (evt, treeId, treeNode) {
 
       // 数组去重
@@ -323,6 +271,9 @@ export default {
 
   },
 
+  mounted () {
+
+  },
 }
 </script>
 
@@ -384,6 +335,7 @@ export default {
   }
 }
 </style>
+
 
 ```
 

@@ -15,7 +15,7 @@ export default defineConfig({
     nav: [
       { text: '首页', link: '/' },
       { text: '示例', link: '/md/fastcomponents/whatisit' },
-      { text: '1.0.4', link: 'https://www.npmjs.com/package/unicore-sdk' }
+      { text: '1.0.7', link: 'https://www.npmjs.com/package/unicore-sdk' }
     ],
     search: {
       provider: 'local'
