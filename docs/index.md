@@ -8,7 +8,7 @@ hero:
   tagline: 自由切换 GIS 与 BIM 应用
   actions:
     - theme: brand
-      text: 什么是UniCore ？
+      text: 什么是通用图形引擎？
       link: /md/whatisit
     - theme: alt
       text: 快速开始

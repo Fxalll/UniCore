@@ -70,12 +70,12 @@ let uniCore = new UniCore(config, accessToken);
 uniCore.init("unicoreContainer");
 let viewer = window.viewer;
 ```
-accessToken可联系开发者获取Token获取方法，下面为测试token：
+accessToken 可联系开发者获取 Token 获取方法，下面为测试 token ：
 
 ```md
 测试Token：eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJqdGkiOiIxNjEwMzI4My01MjBmLTQzYzktOGZiMS0wMDRhZjE0N2IyMGIiLCJpZCI6MTc1NzkyLCJpYXQiOjE3MTM3NzQ3OTh9.zU-R4MNvHr8rvn1v28PQfDImyutnpPF2lmEgGeSPckQ
 ```
-在前端界面新增一段用于存放通用图形引擎显示区域的div（通过css样式修改可以将通用图形引擎显示区域调整为全屏，这里展示未作修改的样式）：
+在前端界面新增一段用于存放通用图形引擎显示区域的 div （通过 css 样式修改可以将通用图形引擎显示区域调整为全屏，这里展示未作修改的样式）：
 
 ```js
 <div id="unicoreContainer"></div>
@@ -85,6 +85,20 @@ accessToken可联系开发者获取Token获取方法，下面为测试token：
 
 ![Alt text](image.png)
 
+为了让通用图形引擎显示区域更好地展示，建议为 div 设置 css 样式，如下例：
+
+```css
+<style scoped>
+#unicoreContainer {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+}
+</style>
+```
+
 ### 温馨提示
 
-不建议将 viewer 放入 Vue 中的 store、data、computed 内，会导致 Cesium 帧率严重下降的问题。可以使用 window.viewer 的方式存放 viewer 。
+鉴于 Vue 的实现原理，`不建议将 viewer 放入 Vue 中的 store、data、computed 内`，会导致通用图形引擎的展示帧率严重下降。通用图形引擎示例代码默认使用 window.viewer 的方式存放 viewer 。

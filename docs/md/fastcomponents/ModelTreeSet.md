@@ -419,13 +419,13 @@ export default {
   methods: {
 
     /**
- * GIS引擎初始化
- */
+    * 通用图形引擎初始化
+    */
     init () {
 
       // 初始化UniCore
 
-      //  配置unicore的token
+      // 目前采用Cesium的地形&底图数据，这里配置Cesium的token
       let accessToken = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJqdGkiOiIxNjEwMzI4My01MjBmLTQzYzktOGZiMS0wMDRhZjE0N2IyMGIiLCJpZCI6MTc1NzkyLCJpYXQiOjE3MTM3NzQ3OTh9.zU-R4MNvHr8rvn1v28PQfDImyutnpPF2lmEgGeSPckQ";
       // 初始化unicore
       let uniCore = new UniCore(config, accessToken);
@@ -468,6 +468,15 @@ export default {
 
 }
 </script>
+<style scoped>
+#unicoreContainer {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+}
+</style>
 ```
 
 

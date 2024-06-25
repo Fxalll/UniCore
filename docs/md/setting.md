@@ -1,18 +1,18 @@
-# UniCore 配置
+# 通用图形引擎配置
 
-### 进入 UniCore 配置文件
+### 进入 UniCore SDK 配置文件
 
-你可以按着 `ctrl` 键并左键单击 'unicore-sdk/unicore.config' 以进入 UniCore 配置文件，如下图：
+你可以按着 `ctrl` 键并左键单击 'unicore-sdk/unicore.config' 以进入 UniCore SDK 配置文件，如下图：
 
 ![Alt text](image-3.png)
 
-你也可以在 node_modules/unicore/unicore.config 处找到 UniCore 配置文件。
+你也可以在 node_modules/unicore-sdk/unicore.config 处找到 UniCore SDK 配置文件。
 
 `注意：修改配置文件后需重新执行命令启动项目以更新更改。`
 
 ### 默认参数
 
-UniCore 配置文件如下所示，可根据需求调整。
+UniCore SDK 配置文件如下所示，可根据需求调整。
 
 比如，UniCore 为保证兼容性，默认使用 WebGL 1.0 运行。你可以在配置文件中将 requestWebgl2 设为 `True`，将 requestWebgl1 设为 `False` 以开启 WebGL 2.0。
 

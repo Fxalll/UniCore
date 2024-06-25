@@ -5,33 +5,33 @@ export default defineConfig({
   title: "通用图形引擎",
   description: "为 GIS + BIM 应用而生的通用图形引擎",
   themeConfig: {
-    lastUpdated: {
-      text: '最近更新于',
-      formatOptions: {
-        dateStyle: 'full',
-        timeStyle: 'medium'
-      }
-    },
+    // lastUpdated: {
+    //   text: '最近更新于',
+    //   formatOptions: {
+    //     dateStyle: 'full',
+    //     timeStyle: 'medium'
+    //   }
+    // },
     nav: [
       { text: '首页', link: '/' },
       { text: '示例', link: '/md/fastcomponents/whatisit' },
-      { text: '1.0.2', link: 'https://www.npmjs.com/package/unicore-sdk' }
+      { text: '1.0.4', link: 'https://www.npmjs.com/package/unicore-sdk' }
     ],
     search: {
       provider: 'local'
     },
     footer: {
-      message: 'v0.1.0 created by 3hljk',
+      message: 'v0.1.0 created by 智慧建造研究部',
       copyright: 'Copyright © 2024-present 广州粤建三和软件股份有限公司'
     },
     sidebar: [
       {
         text: '简介',
         items: [
-          { text: 'UniCore 是什么？', link: '/md/whatisit' },
-          { text: '为什么选择 UniCore？', link: '/md/whyit' },
+          { text: '通用图形引擎是什么？', link: '/md/whatisit' },
+          { text: '为什么选择通用图形引擎？', link: '/md/whyit' },
           { text: '快速开始', link: '/md/faststart' },
-          { text: 'UniCore 配置', link: '/md/setting' },
+          { text: '通用图形引擎配置', link: '/md/setting' },
           { text: '工具栏配置', link: '/md/toolbarstart' },
         ],
         collapsed: false
