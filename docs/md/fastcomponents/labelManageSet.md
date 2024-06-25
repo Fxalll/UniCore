@@ -172,7 +172,7 @@ export default {
 
     onClickRow (val) {
       let axis = uniCore.position.cartesian3_2axis(val.axis);
-      uniCore.position.buildingPosition(window.viewer, [axis[0], axis[1], 760], -20, -90, 1)
+      uniCore.position.buildingPosition(uniCore.viewer, [axis[0], axis[1], 760], -20, -90, 1)
     },
 
     handleChange (index, row) {
@@ -475,7 +475,7 @@ export default {
       let uniCore = new UniCore(config, accessToken);
       uniCore.init("unicoreContainer");
       window.uniCore = uniCore;
-      let viewer = window.viewer;
+      let viewer = uniCore.viewer;
 
       // 视角初始化
       uniCore.position.buildingPosition(viewer, [113.12380548015745, 28.250758831850005, 700], -20, -45, 1);

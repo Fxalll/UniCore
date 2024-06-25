@@ -13,7 +13,7 @@ UniCore viewer 提供 enableLighting 方法用于设置全局光照。
 ### 代码示例
 
 ```js
-window.viewer.scene.globe.enableLighting = true;
+uniCore.viewer.scene.globe.enableLighting = true;
 ```
 
 ### 拓展

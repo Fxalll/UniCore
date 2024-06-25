@@ -72,10 +72,9 @@ export default {
       // 初始化unicore
       let uniCore = new UniCore(config, accessToken);
       uniCore.init("unicoreContainer");
-      let viewer = window.viewer;
 
       // 视角初始化
-      uniCore.position.buildingPosition(viewer, [113.12380548015745, 28.250758831850005, 700], -20, -45, 1);
+      uniCore.position.buildingPosition(uniCore.viewer, [113.12380548015745, 28.250758831850005, 700], -20, -45, 1);
 
       /**
        * 小别墅1号示例
@@ -193,7 +192,7 @@ export default {
       // 初始化unicore
       let uniCore = new UniCore(config, accessToken);
       uniCore.init("unicoreContainer");
-      let viewer = window.viewer;
+      let viewer = uniCore.viewer;
 
       // 视角初始化
       uniCore.position.buildingPosition(viewer, [113.12380548015745, 28.250758831850005, 700], -20, -45, 1);

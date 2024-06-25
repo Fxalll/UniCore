@@ -20,7 +20,7 @@ UniCore 内置 Position 类，提供 screen2axis 方法用于将屏幕坐标转�
 
 ```js
 function mouseClick(e) {
-  let axis = uniCore.position.screen2axis(window.viewer, e);
+  let axis = uniCore.position.screen2axis(uniCore.viewer, e);
   console.log(axis);
 }
 ```

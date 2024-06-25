@@ -13,5 +13,5 @@ UniCore viewer 提供 resolutionScale 方法用于设置分辨率，默认为 1.
 ### 代码示例
 
 ```js
-window.viewer.resolutionScale = 0.9;
+uniCore.viewer.resolutionScale = 0.9;
 ```

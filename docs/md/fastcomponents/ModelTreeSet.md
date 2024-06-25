@@ -383,7 +383,7 @@ export default {
       let uniCore = new UniCore(config, accessToken);
       uniCore.init("unicoreContainer");
       window.uniCore = uniCore;
-      let viewer = window.viewer;
+      let viewer = uniCore.viewer;
 
       // 视角初始化
       uniCore.position.buildingPosition(viewer, [113.12380548015745, 28.250758831850005, 700], -20, -45, 1);

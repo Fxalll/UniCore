@@ -58,10 +58,9 @@ export default {
       // 初始化unicore
       let uniCore = new UniCore(config, accessToken);
       uniCore.init("unicoreContainer");
-      let viewer = window.viewer;
 
       // 视角初始化
-      uniCore.position.buildingPosition(viewer, [113.12380548015745, 28.250758831850005, 700], -20, -45, 1);
+      uniCore.position.buildingPosition(uniCore.viewer, [113.12380548015745, 28.250758831850005, 700], -20, -45, 1);
 
       uniCore.model.dig([113.12123548015745, 28.255978831850005, 20], [-20, -20, -185, -185])
     }

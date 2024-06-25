@@ -57,15 +57,14 @@ export default {
       let uniCore = new UniCore(config, accessToken);
       uniCore.init("unicoreContainer");
       window.uniCore = uniCore;
-      let viewer = window.viewer;
 
       // 视角初始化
-      uniCore.position.buildingPosition(viewer, [113.12380548015745, 28.250758831850005, 700], -20, -45, 1);
+      uniCore.position.buildingPosition(uniCore.viewer, [113.12380548015745, 28.250758831850005, 700], -20, -45, 1);
 
     },
 
     mouseClick (e) {
-      alert(window.uniCore.position.screen2axis(window.viewer, e));
+      alert(window.uniCore.position.screen2axis(uniCore.viewer, e));
     }
 
   }
@@ -90,6 +89,6 @@ export default {
 ### 关键代码
 
 ```js
-uniCore.position.screen2axis(window.viewer, e)
+uniCore.position.screen2axis(uniCore.viewer, e)
 ```
 

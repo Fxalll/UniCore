@@ -177,7 +177,7 @@ export default {
     onClickRow (val) {
 
       let axis = val.axisList[Math.round(val.axisList.length / 2)];
-      uniCore.position.buildingPosition(window.viewer, [axis[0], axis[1], 760], -20, -90, 1)
+      uniCore.position.buildingPosition(uniCore.viewer, [axis[0], axis[1], 760], -20, -90, 1)
     },
 
     handleChange (index, row) {
@@ -235,7 +235,7 @@ export default {
     },
 
     startClick () {
-      let viewer = window.viewer;
+      let viewer = uniCore.viewer;
       viewer.scene.globe.depthTestAgainstTerrain = true; // 必须开启深度检测，否则点击的位置可能不在理想位置
       this.handler = new Cesium.ScreenSpaceEventHandler(viewer.canvas);
       this.handler.setInputAction((event) => {
@@ -523,7 +523,7 @@ export default {
       let uniCore = new UniCore(config, accessToken);
       uniCore.init("unicoreContainer");
       window.uniCore = uniCore;
-      let viewer = window.viewer;
+      let viewer = uniCore.viewer;
 
       // 视角初始化
       uniCore.position.buildingPosition(viewer, [113.12380548015745, 28.250758831850005, 700], -20, -45, 1);

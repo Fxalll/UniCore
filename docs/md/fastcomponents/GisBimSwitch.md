@@ -41,8 +41,8 @@ export default {
       uniCore.model.undergroundMode(bool);
       
       if (bool) {
-        window.viewer.scene.backgroundColor = Cesium.Color.fromCssColorString("#b9d3ee");
-        window.viewer.terrainProvider = null;
+        uniCore.viewer.scene.backgroundColor = Cesium.Color.fromCssColorString("#b9d3ee");
+        uniCore.viewer.terrainProvider = null;
 
         // 只留该模型显示，其他全部隐藏
         uniCore.model.setPrimitivesShow(this.modelId, false, false)
@@ -54,7 +54,7 @@ export default {
 
       } else {
         viewer.scene.backgroundColor = null;
-        window.viewer.terrainProvider = window.terrainProvider;
+        uniCore.viewer.terrainProvider = window.terrainProvider;
 
         // 还原所有模型显示
         uniCore.model.setPrimitivesShow('', true)
@@ -64,7 +64,7 @@ export default {
 
       }
       // 打开视角锁定
-      uniCore.position.lockTo(window.viewer, bool, this.lockAxiz);
+      uniCore.position.lockTo(uniCore.viewer, bool, this.lockAxiz);
 
     }
 
@@ -170,7 +170,7 @@ export default {
       let uniCore = new UniCore(config, accessToken);
       uniCore.init("unicoreContainer");
       window.uniCore = uniCore;
-      let viewer = window.viewer;
+      let viewer = uniCore.viewer;
 
       // 视角初始化
       uniCore.position.buildingPosition(viewer, [113.12380548015745, 28.250758831850005, 700], -20, -45, 1);

@@ -20,7 +20,7 @@ let options = {
 uniCore.model.createTileset(options.url, options).then(cityLeft => {
   uniCore.model.changeModelPos(cityLeft, [113.12098820449636, 28.256150218457687, 130], [0, 0, 0], [23.8, 23.8, 23.8])
 
-  window.viewer.zoomTo(cityLeft)
+  uniCore.viewer.zoomTo(cityLeft)
 
 })
 ```
@@ -28,7 +28,7 @@ uniCore.model.createTileset(options.url, options).then(cityLeft => {
 ### 关键代码
 
 ```js
-window.viewer.zoomTo(cityLeft)
+uniCore.viewer.zoomTo(cityLeft)
 ```
 
 ### 拓展
@@ -36,5 +36,5 @@ window.viewer.zoomTo(cityLeft)
 UniCore viewer 提供的 flyTo 方法也能达到与 zoomTo 一致的效果。
 
 ```js
-window.viewer.flyTo(cityLeft)
+uniCore.viewer.flyTo(cityLeft)
 ```

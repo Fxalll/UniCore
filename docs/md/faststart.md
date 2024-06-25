@@ -68,7 +68,6 @@ import 'unicore-sdk/Widgets/widgets.css'
 // 初始化unicore
 let uniCore = new UniCore(config, accessToken);
 uniCore.init("unicoreContainer");
-let viewer = window.viewer;
 ```
 accessToken 可联系开发者获取 Token 获取方法，下面为测试 token ：
 
@@ -101,4 +100,4 @@ accessToken 可联系开发者获取 Token 获取方法，下面为测试 token 
 
 ### 温馨提示
 
-鉴于 Vue 的实现原理，`不建议将 viewer 放入 Vue 中的 store、data、computed 内`，会导致通用图形引擎的展示帧率严重下降。通用图形引擎示例代码默认使用 window.viewer 的方式存放 viewer 。
+鉴于 Vue 的实现原理，`不建议将 viewer 放入 Vue 中的 store、data、computed 内`，会导致通用图形引擎的展示帧率严重下降。你可以直接使用 `uniCore.viewer` 或 `window.viewer` 的方式获取 viewer。 

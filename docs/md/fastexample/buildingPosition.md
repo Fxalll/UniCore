@@ -8,7 +8,7 @@ outline: deep
 
 ### 方法介绍
 
-UniCore 内置 Position 类，提供 buildingPosition 方法用于定位到某个经纬度坐标上。该方法必须传入 viewer 对象及所需定位的经纬度+高度的坐标数组，前者可使用 UniCore 对外暴露的变量 window.viewer ，后者为 [ 经度 , 维度 , 高度 ] 的数组形式如 `[113.12380548015745, 28.250758831850005, 700]`。
+UniCore 内置 Position 类，提供 buildingPosition 方法用于定位到某个经纬度坐标上。该方法必须传入 viewer 对象及所需定位的经纬度+高度的坐标数组，前者可使用 UniCore 对外暴露的变量 uniCore.viewer ，后者为 [ 经度 , 维度 , 高度 ] 的数组形式如 `[113.12380548015745, 28.250758831850005, 700]`。
 
 此外，buildingPosition 方法还提供 heading、pitch、duration 三类可选变量，前两个变量控制摄像机俯仰角，第三个变量控制动画时间（即移动摄像机所需时间）。
 
@@ -62,10 +62,9 @@ export default {
       // 初始化unicore
       let uniCore = new UniCore(config, accessToken);
       uniCore.init("unicoreContainer");
-      let viewer = window.viewer;
 
       // 视角初始化
-      uniCore.position.buildingPosition(viewer, [113.12380548015745, 28.250758831850005, 700], -20, -45, 1);
+      uniCore.position.buildingPosition(uniCore.viewer, [113.12380548015745, 28.250758831850005, 700], -20, -45, 1);
 
     }
 
@@ -93,5 +92,6 @@ export default {
 你可以通过修改 buildingPosition 中的变量查看修改这些变量带来的效果。
 
 ```js
-uniCore.position.buildingPosition(viewer, [113.12380548015745,28.250758831850005, 700], -20, -45, 1);
+// 视角初始化
+uniCore.position.buildingPosition(uniCore.viewer, [113.12380548015745, 28.250758831850005, 700], -20, -45, 1);
 ```

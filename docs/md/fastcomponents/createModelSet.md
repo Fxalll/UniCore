@@ -110,7 +110,7 @@ export default {
      * 生成区域绘制
      */
     initCreate () {
-      let viewer = window.viewer;
+      let viewer = uniCore.viewer;
       // 暂时关闭定时器
       clearInterval(window.onlineInterval);
       window.onlineInterval = undefined;
@@ -209,7 +209,7 @@ export default {
 
     onClickRow (val) {
       let axis = uniCore.position.cartesian3_2axis(val.axisList[Math.round(val.axisList.length / 2)]);
-      uniCore.position.buildingPosition(window.viewer, [parseFloat(axis[0]), parseFloat(axis[1]) - 0.00005, 2260], -20, -90, 1)
+      uniCore.position.buildingPosition(uniCore.viewer, [parseFloat(axis[0]), parseFloat(axis[1]) - 0.00005, 2260], -20, -90, 1)
     },
 
     handleChange (index, row) {
@@ -280,7 +280,7 @@ export default {
     drawExtent () {
       this.init();
 
-      let viewer = window.viewer;
+      let viewer = uniCore.viewer;
 
 
       viewer.scene.globe.depthTestAgainstTerrain = true; // 开启深度检测
@@ -331,7 +331,7 @@ export default {
     },
 
     getAreaHeight (positions) {
-      let viewer = window.viewer;
+      let viewer = uniCore.viewer;
       let startP = positions[0];
       let endP = positions[positions.length - 1];
       if (startP.x != endP.x && startP.y != endP.y && startP.z != endP.z) {
@@ -365,7 +365,7 @@ export default {
     },
 
     createPoint (worldPosition) {
-      let viewer = window.viewer;
+      let viewer = uniCore.viewer;
       const point = viewer.entities.add({
         position: worldPosition,
         point: {
@@ -378,7 +378,7 @@ export default {
     },
 
     drawShape (positionData, mat) {
-      let viewer = window.viewer;
+      let viewer = uniCore.viewer;
       let shape = viewer.entities.add({
         polygon: {
           hierarchy: positionData,
@@ -392,7 +392,7 @@ export default {
     },
 
     drawPolyline (positions) {
-      let viewer = window.viewer;
+      let viewer = uniCore.viewer;
       if (positions.length < 1) return;
 
       let startP = positions[0];
@@ -479,7 +479,7 @@ export default {
     },
 
     clearAllEntities () {
-      let viewer = window.viewer;
+      let viewer = uniCore.viewer;
       const length = this.tempEntities.length;
       for (let i = 0; i < length; i++) {
         viewer.entities.remove(this.tempEntities[i]);
@@ -529,9 +529,9 @@ export default {
         }
       }
 
-      const handler = new Cesium.ScreenSpaceEventHandler(window.viewer.scene.canvas);
+      const handler = new Cesium.ScreenSpaceEventHandler(uniCore.viewer.scene.canvas);
       handler.setInputAction(function (e) {
-        const pickObj = window.viewer.scene.pick(e.position);
+        const pickObj = uniCore.viewer.scene.pick(e.position);
         clearColor()
         if (Cesium.defined(pickObj)) {
           try {
@@ -771,7 +771,7 @@ export default {
       let uniCore = new UniCore(config, accessToken);
       uniCore.init("unicoreContainer");
       window.uniCore = uniCore;
-      let viewer = window.viewer;
+      let viewer = uniCore.viewer;
 
       // 视角初始化
       uniCore.position.buildingPosition(viewer, [113.12380548015745, 28.250758831850005, 700], -20, -45, 1);

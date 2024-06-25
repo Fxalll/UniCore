@@ -14,8 +14,8 @@ UniCore viewer 提供 moon/fog/sun/skyBox 方法用于设置天体、雾等特�
 
 ```js
 // 关闭太阳，月亮，天空盒，雾等相关特效
-window.viewer.scene.moon.show = false;
-window.viewer.scene.fog.enabled = false;
-window.viewer.scene.sun.show = false;
-window.viewer.scene.skyBox.show = false;
+uniCore.viewer.scene.moon.show = false;
+uniCore.viewer.scene.fog.enabled = false;
+uniCore.viewer.scene.sun.show = false;
+uniCore.viewer.scene.skyBox.show = false;
 ```

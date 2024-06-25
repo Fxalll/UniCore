@@ -72,10 +72,9 @@ export default {
       // 初始化unicore
       let uniCore = new UniCore(config, accessToken);
       uniCore.init("unicoreContainer");
-      let viewer = window.viewer;
 
       // 视角初始化
-      uniCore.position.buildingPosition(viewer, [113.33725358682781, 28.631879047649946, 1700], -20, -45, 1);
+      uniCore.position.buildingPosition(uniCore.viewer, [113.33725358682781, 28.631879047649946, 1700], -20, -45, 1);
 
       let earthPositionList = [
         uniCore.position.axis2cartesian3([113.3344684928246, 28.651326795339365, 172.87746956986445]),
@@ -84,7 +83,7 @@ export default {
         uniCore.position.axis2cartesian3([113.33192954275, 28.639634525064086, 222.32523043801942]),
         uniCore.position.axis2cartesian3([113.33780681708383, 28.642851075420573, 151.94046698273897]),
       ]
-      uniCore.terrainClip.init(window.viewer, {
+      uniCore.terrainClip.init(uniCore.viewer, {
         height: 100,
         splitNum: 1000,
         bottomImg: '../../assets/img/side.jpeg',
@@ -125,7 +124,7 @@ let earthPositionList = [
         uniCore.position.axis2cartesian3([113.33192954275, 28.639634525064086, 222.32523043801942]),
         uniCore.position.axis2cartesian3([113.33780681708383, 28.642851075420573, 151.94046698273897]),
 ]
-uniCore.terrainClip.init(window.viewer, {
+uniCore.terrainClip.init(uniCore.viewer, {
   height: 170,
   splitNum: 1000,
   bottomImg: '../../assets/img/side.jpeg',

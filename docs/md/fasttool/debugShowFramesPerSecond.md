@@ -13,5 +13,5 @@ UniCore viewer 提供 debugShowFramesPerSecond 方法用于开启帧率显示。
 ### 代码示例
 
 ```js
-window.viewer.scene.debugShowFramesPerSecond = true;
+uniCore.viewer.scene.debugShowFramesPerSecond = true;
 ```
