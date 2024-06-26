@@ -96,6 +96,7 @@ export default defineConfig({
               { text: 'GIS / BIM 切换组件', link: '/md/fastcomponents/GisBimSwitch' },
               { text: '3DTiles 模型信息树组件', link: '/md/fastcomponents/ModelTreeSet' },
               { text: '模型属性窗口组件', link: '/md/fastcomponents/modelPropertyInfo' },
+              { text: '模型加载进度条组件', link: '/md/fastcomponents/loadModelInfo' },
             ],
             collapsed: false
           },

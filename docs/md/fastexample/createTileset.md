@@ -30,6 +30,7 @@ let options = {
  */
 ```
 
+你可以通过加入 [模型加载进度条组件](../fastcomponents/loadModelInfo.md) 提升用户体验。
 
 不妨通过代码示例在 Vue 中尝试一下（相关模型文件在本章 [阅前提醒](./whatisit.md) 中的内网Git链接中可获取）：
 
