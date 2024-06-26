@@ -354,7 +354,7 @@ export default {
 import { UniCore } from 'unicore-sdk'
 import { config } from 'unicore-sdk/unicore.config'
 import 'unicore-sdk/Widgets/widgets.css'
-const mtSet = () => import('@/components/ModelTreeSet/index'); //模型信息树组件
+import mtSet from '@/components/UniDemoView.vue'; //模型信息树组件
 
 
 export default {

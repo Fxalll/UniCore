@@ -111,3 +111,7 @@ uniCore.interact.setTilesRightClickMenu([{
   propertysURL: '../../assets/3Dtiles/sample3_方法2_小别墅属性(1)/01 小别墅.json'
 }], (property) => console.log(property));
 ```
+
+### 拓展
+
+你可以使用 [模型属性窗口组件](../fastcomponents/modelPropertyInfo.md) 快速创建一个模型窗口。

@@ -53,7 +53,7 @@ export default {
         // )
 
       } else {
-        viewer.scene.backgroundColor = null;
+        uniCore.viewer.scene.backgroundColor = null;
         uniCore.viewer.terrainProvider = window.terrainProvider;
 
         // 还原所有模型显示

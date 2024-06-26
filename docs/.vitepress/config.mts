@@ -95,6 +95,7 @@ export default defineConfig({
             items: [
               { text: 'GIS / BIM 切换组件', link: '/md/fastcomponents/GisBimSwitch' },
               { text: '3DTiles 模型信息树组件', link: '/md/fastcomponents/ModelTreeSet' },
+              { text: '模型属性窗口组件', link: '/md/fastcomponents/modelPropertyInfo' },
             ],
             collapsed: false
           },
@@ -139,6 +140,7 @@ export default defineConfig({
               { text: '全局光照设置', link: '/md/fasttool/enableLighting' },
               { text: '分辨率设置', link: '/md/fasttool/resolutionScale' },
               { text: '天体、雾等特效', link: '/md/fasttool/setMoonSunFog' },
+              { text: '全屏展示', link: '/md/fasttool/fullScreen' },
             ],
             collapsed: false
           },
