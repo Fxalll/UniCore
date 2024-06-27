@@ -4,6 +4,10 @@ import { defineConfig } from 'vitepress'
 export default defineConfig({
   title: "通用图形引擎",
   description: "为 GIS + BIM 应用而生的通用图形引擎",
+  head: [
+    // 添加图标
+    ["link", { rel: "icon", href: "/logo3.png" }],
+  ],
   themeConfig: {
     // lastUpdated: {
     //   text: '最近更新于',
@@ -12,10 +16,36 @@ export default defineConfig({
     //     timeStyle: 'medium'
     //   }
     // },
+    logo: '/logo.png',
     nav: [
       { text: '首页', link: '/' },
-      { text: '示例', link: '/md/fastcomponents/whatisit' },
-      { text: '1.0.8', link: 'https://www.npmjs.com/package/unicore-sdk' }
+      {
+        text: '简介', items: [
+          { text: '通用图形引擎是什么？', link: '/md/whatisit' },
+          { text: '为什么选择通用图形引擎？', link: '/md/whyit' },
+          { text: '快速开始', link: '/md/faststart' },
+          { text: '通用图形引擎配置', link: '/md/setting' },
+          { text: '工具栏配置', link: '/md/toolbarstart' },
+        ]
+      },
+      {
+        text: 'API文档',
+        items: [
+          { text: 'Model', link: '/md/fastapi/Model' },
+          { text: 'Position', link: '/md/fastapi/Position' },
+          { text: 'Tip', link: '/md/fastapi/Tip' },
+          { text: 'Interact', link: '/md/fastapi/Interact' },
+          { text: 'Database', link: '/md/fastapi/Database' },
+          { text: 'Flat', link: '/md/fastapi/Flat' },
+          { text: 'TerrainClip', link: '/md/fastapi/TerrainClip' },
+          { text: 'Service', link: '/md/fastapi/Service' },
+        ]
+      },
+      {
+        text: '1.1.1', items: [
+          { text: '版本更新', link: 'http://192.168.0.6:3000/cxyjy_zhjz/npm-unicore-sdk/commits/branch/main' }
+        ]
+      }
     ],
     search: {
       provider: 'local'
@@ -60,7 +90,7 @@ export default defineConfig({
             collapsed: false
           },
           {
-            text: '模型交互',
+            text: '模型操作',
             items: [
               { text: '模型剪切', link: '/md/fastexample/cutModel' },
               { text: '3DTiles 模型开启交互事件', link: '/md/fastexample/setTilesRightClickMenu' },
@@ -80,6 +110,7 @@ export default defineConfig({
               { text: '绘制多段线条', link: '/md/fastexample/paintLine' },
               { text: '绘制墙体', link: '/md/fastexample/paintWall' },
               { text: '根据坐标创建一个标签', link: '/md/fastexample/createTip' },
+              { text: '将HTML元素作为标签', link: '/md/fastexample/createHtmlTip' },
             ],
             collapsed: false
           },
@@ -140,8 +171,9 @@ export default defineConfig({
               { text: '帧率显示', link: '/md/fasttool/debugShowFramesPerSecond' },
               { text: '全局光照设置', link: '/md/fasttool/enableLighting' },
               { text: '分辨率设置', link: '/md/fasttool/resolutionScale' },
-              { text: '天体、雾等特效', link: '/md/fasttool/setMoonSunFog' },
+              { text: '天体、雾、大气、光照详细设置', link: '/md/fasttool/setMoonSunFog' },
               { text: '全屏展示', link: '/md/fasttool/fullScreen' },
+              { text: '首屏加载动画', link: '/md/fasttool/loadingScreen' },
             ],
             collapsed: false
           },

@@ -16,7 +16,7 @@ npm install unicore-sdk
 
 以 Vue2.0 框架为例，搭建框架后，在 vue.config.js 需要添加配置以保证功能的正常运行。本文提供两种配置，一种是基础配置，另一种是优化首屏加载速度的配置。
 
-经测试，在 180 KB/s 的低速网速下，加载基础配置所需的第一次首屏加载时间为 `27秒` ，而使用优化首屏加载速度的配置所需时间为 `9秒` 。提升显著，因此推荐使用后者 Webpack 配置：
+经测试，在 180 KB/s 的低速网速下，经过多次测试，加载基础配置所需的第一次首屏加载时间为 `27秒` ，而使用优化首屏加载速度的配置所需时间为 `9秒` 。提升显著，因此推荐使用后者 Webpack 配置：
 
 `注：在第一次首屏加载后，浏览器会自动缓存数据，无论使用哪种配置，二次加载时间将大大缩短。`
 
@@ -182,6 +182,8 @@ module.exports = defineConfig({
 })
 ```
 
+### 使用方法
+
 在Vue入口文件引入通用图形引擎SDK及配置文件、样式文件：
 
 ```js
@@ -221,6 +223,7 @@ accessToken 可联系开发者获取 Token 获取方法，下面为测试 token 
   left: 0;
   width: 100%;
   height: 100%;
+  overflow: hidden;
 }
 </style>
 ```
@@ -228,3 +231,7 @@ accessToken 可联系开发者获取 Token 获取方法，下面为测试 token 
 ### 温馨提示
 
 鉴于 Vue 的实现原理，`不建议将 viewer 放入 Vue 中的 store、data、computed 内`，会导致通用图形引擎的展示帧率严重下降。你可以直接使用 `uniCore.viewer` 或 `window.viewer` 的方式获取 viewer。 
+
+### 拓展
+
+在初次进行首屏加载时，可通过添加 [首屏加载动画](./fasttool/loadingScreen.md) 提升用户体验。

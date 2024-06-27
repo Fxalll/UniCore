@@ -72,10 +72,11 @@ export default {
       uniCore.position.buildingPosition(uniCore.viewer, [113.12380548015745, 28.250758831850005, 700], -20, -45, 1);
 
       let options = {
-        id: '城市白膜'
+        id: '城市白膜',
+        url: '../../../assets/3Dtiles/changshaCityModel/tileset.json'
       }
       //加载3dtiles
-      uniCore.model.createTileset('../../../assets/3Dtiles/changshaCityModel/tileset.json', options).then(cityLeft => {
+      uniCore.model.createTileset(options.url, options).then(cityLeft => {
         uniCore.model.changeModelPos(cityLeft, [113.12098820449636, 28.256150218457687, 50], [0, 0, -90], [23.8, 23.8, 23.8])
       })
     }
@@ -91,6 +92,7 @@ export default {
   left: 0;
   width: 100%;
   height: 100%;
+  overflow: hidden;
 }
 </style>
 
@@ -103,11 +105,8 @@ export default {
 ### 关键代码
 
 ```js
-let options = {
-  id: '城市白膜'
-}
 //加载3dtiles
-uniCore.model.createTileset('../../../assets/3DtileschangshaCityModel/tileset.json', options).then(cityLeft => {
+uniCore.model.createTileset(options.url, options).then(cityLeft => {
   uniCore.model.changeModelPos(cityLeft, [113.12098820449636, 28.256150218457687, 50], [0, 0, -90], [23.8, 23.8, 23.8])
 })
 ```
@@ -124,6 +123,43 @@ uniCore.model.createTileset(options.url, options, (tileset) => { tileset.style =
 ```
 
 ![Alt text](image-23.png)
+
+### 利用回调函数改变模型着色器（如亮度）
+
+通过将关键代码中的加载 3dtiles 部分修改为以下代码，即可利用回调函数改变模型着色器（如亮度）。调整代码中的 `material.diffuse * (1.0)` 的 `1.0` 数值可调整模型亮度。你也可以尝试使用更多不同的着色器代码修改模型显示效果。
+
+```js
+//加载3dtiles
+uniCore.model.createTileset('../../assets/3Dtiles/sample3_方法2_小别墅属性(1)/tileset.json', options, (tileset) => {
+  let customShader = new Cesium.CustomShader({
+    // lightingModel: Cesium.LightingModel.UNLIT,
+    lightingModel: Cesium.LightingModel.PBR,
+
+    //片元着色器
+    fragmentShaderText: `
+  void fragmentMain(FragmentInput fsInput, inout czm_modelMaterial material) {
+    vec3 positionMC = fsInput.attributes.positionMC;
+    //此处以下为光线效果
+    material.diffuse += material.diffuse * (1.0);
+  }`
+  })
+
+  tileset.customShader = customShader
+
+}).then(cityLeft => {
+  uniCore.model.changeModelPos(cityLeft, [113.12098820449636, 28.256150218457687, 130], [0, 0, 0], [23.8, 23.8, 23.8])
+})
+```
+
+修改前：
+
+![Alt text](image-24.png)
+
+
+修改后：
+
+![Alt text](image-25.png)
+
 
 ### 拓展
 

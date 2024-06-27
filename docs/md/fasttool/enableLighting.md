@@ -21,8 +21,8 @@ uniCore.viewer.scene.globe.enableLighting = true;
 你还可以结合 shadows 、light 设置阴影或进一步设置光照。如：
 
 ```js
-viewer.shadows = true
-viewer.scene.light = new Cesium.DirectionalLight({
+uniCore.viewer.shadows = true
+uniCore.viewer.scene.light = new Cesium.DirectionalLight({
   direction: new Cesium.Cartesian3(0.354925, -0.890918, -0.283358)
 })
 ```

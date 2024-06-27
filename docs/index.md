@@ -13,7 +13,7 @@ hero:
     - theme: alt
       text: 快速开始
       link: /md/faststart
-  image: {}
+  image: { src: "/logo2.png"}
 
 features:
   - title: 通用性

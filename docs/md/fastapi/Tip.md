@@ -53,6 +53,22 @@ UniTip类
 
 <br>
 
+#### createHtmlTip(id, text)
+
+将HTML元素作为标签
+
+##### Parameters:
+
+| Name | Type | Default | Description |
+| --- | --- | --- | --- |
+| `id` | \* |  | id值 |
+| `axis` | \* |  | 标签坐标 |
+| `isFixed` | \* |  | 是否将元素固定 |
+
+<br><hr>
+
+<br>
+
 #### getTipById(id)
 
 根据id查找tip
