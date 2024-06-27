@@ -8,6 +8,8 @@ outline: deep
 
 通过 3DTiles 模型的属性信息及构件ID，能够生成该模型的信息树（构件树）。信息树不仅提供可视化展示构件层级的功能，还能够通过按钮控制对应构件类别的显隐。
 
+注：该功能使用了 elementUI 库，使用前需安装该库，具体方法见 [elementUI 安装](https://element.eleme.io/#/zh-CN/component/installation) 。
+
 注：该功能使用了 vue-giant-tree 库，使用前需安装该库（该组件库有BUG，如遇到报错可尝试先安装该组件库0.1.0版本，后安装该组件库1.0.0版本）：
 
 ```sh
@@ -17,6 +19,8 @@ npm install vue-giant-tree@1.0.0
 不妨通过代码示例在 Vue 中尝试一下：
 
 ### 组件代码示例
+
+默认路径为 `components/ModelTreeSet/index.vue`
 
 ```vue
 <template>
@@ -354,7 +358,7 @@ export default {
 import { UniCore } from 'unicore-sdk'
 import { config } from 'unicore-sdk/unicore.config'
 import 'unicore-sdk/Widgets/widgets.css'
-import mtSet from '@/components/UniDemoView.vue'; //模型信息树组件
+import mtSet from '@/components/ModelTreeSet/index.vue'; //模型信息树组件
 
 
 export default {

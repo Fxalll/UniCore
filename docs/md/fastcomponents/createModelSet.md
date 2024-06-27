@@ -15,6 +15,8 @@ outline: deep
 
 ### 组件代码示例
 
+默认路径为 `components/createModelSet/index.vue`
+
 ```vue
 <template>
   <div>

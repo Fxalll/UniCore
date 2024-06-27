@@ -10,9 +10,13 @@ outline: deep
 
 由于本示例组件方法依赖 `jQuery` ，在使用前注意引入该第三方库。
 
+注：该功能使用了 elementUI 库，使用前需安装该库，具体方法见 [elementUI 安装](https://element.eleme.io/#/zh-CN/component/installation) 。
+
 不妨通过代码示例在 Vue 中尝试一下：
 
 ### 组件代码示例
+
+默认路径为 `components/modelPropertyInfo/index.vue`
 
 ```vue
 <template>

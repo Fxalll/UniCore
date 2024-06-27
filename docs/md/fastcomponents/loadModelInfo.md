@@ -8,12 +8,15 @@ outline: deep
 
 通过模型加载进度条组件，能够在模型加载时显示模型加载进度条，提升使用体验（安慰剂进度条）。
 
+注：该功能使用了 elementUI 库，使用前需安装该库，具体方法见 [elementUI 安装](https://element.eleme.io/#/zh-CN/component/installation) 。
+
 不妨通过代码示例在 Vue 中尝试一下：
 
 ### 组件代码示例
 
-```vue
+默认路径为 `components/loadModelInfo/index.vue`
 
+```vue
 <template>
   <div v-if="!isFinish">
     <!-- 资源加载窗口提示 -->

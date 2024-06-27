@@ -128,6 +128,10 @@ uniCore.tip.createHtmlTip("test", [113.12098820449636, 28.256150218457687, 50], 
 
 ### 拓展
 
+你可以将图片等其他 HTML 元素固定在场景中，如图。
+
+![Alt text](image-30.png)
+
 你甚至可以将组件固定在场景中，以 [模型加载进度条组件](../fastcomponents/loadModelInfo.md) 为例。
 
 #### 代码示例
@@ -223,3 +227,11 @@ export default {
 ![Alt text](image-28.png)
 
 ![Alt text](image-29.png)
+
+### 停用方法
+
+你可以使用 `window.viewer.scene.preRender` 查看其中的 `_listeners`，如果你将该参数清空，则可以清除监听事件。HTML 元素将不再固定在场景中。
+
+```js
+window.viewer.scene.preRender._listeners = [];
+```

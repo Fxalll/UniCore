@@ -8,9 +8,13 @@ outline: deep
 
 通过 GIS / BIM 切换组件，能够在 GIS 功能与 BIM 功能之间自由切换。
 
+注：该功能使用了 elementUI 库，使用前需安装该库，具体方法见 [elementUI 安装](https://element.eleme.io/#/zh-CN/component/installation) 。
+
 不妨通过代码示例在 Vue 中尝试一下：
 
 ### 组件代码示例
+
+默认路径为 `components/GisBimSwitch/index.vue`
 
 ```vue
 <template>
