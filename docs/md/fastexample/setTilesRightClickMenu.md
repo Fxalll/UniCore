@@ -111,7 +111,7 @@ export default {
 
 ### 示例运行结果
 
-![Alt text](image-31.png)
+![Alt text](image-32.png)
 
 ### 关键代码
 
