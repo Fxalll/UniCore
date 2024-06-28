@@ -16,7 +16,7 @@ export default defineConfig({
     //     timeStyle: 'medium'
     //   }
     // },
-    logo: '/logo.png',
+    logo: '/logo3.png',
     nav: [
       { text: '首页', link: '/' },
       {
@@ -42,7 +42,7 @@ export default defineConfig({
         ]
       },
       {
-        text: '1.1.1', items: [
+        text: '1.1.4', items: [
           { text: '版本更新', link: 'http://192.168.0.6:3000/cxyjy_zhjz/npm-unicore-sdk/commits/branch/main' }
         ]
       }
@@ -93,8 +93,9 @@ export default defineConfig({
             text: '模型操作',
             items: [
               { text: '模型剪切', link: '/md/fastexample/cutModel' },
-              { text: '3DTiles 模型开启交互事件', link: '/md/fastexample/setTilesRightClickMenu' },
+              { text: '3DTiles 模型开启交互事件（含 GIS/BIM 场景切换）', link: '/md/fastexample/setTilesRightClickMenu' },
               { text: '模型压平', link: '/md/fastexample/flat' },
+              { text: '模型显隐功能', link: '/md/fastexample/setPrimitivesShow' },
             ],
             collapsed: false
           },

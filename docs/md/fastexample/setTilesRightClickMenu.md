@@ -2,13 +2,13 @@
 outline: deep
 ---
 
-# 3DTiles 模型开启交互事件
+# 3DTiles 模型开启交互事件（含 GIS/BIM 场景切换）
 
 ## Interact 类的方法 - setTilesRightClickMenu
 
 ### 方法介绍
 
-UniCore 内置 Interact 类，提供 setTilesRightClickMenu 方法用于开启3DTiles 模型开启交互事件，如右键菜单、点击高亮、属性property展示。
+UniCore 内置 Interact 类，提供 setTilesRightClickMenu 方法用于开启3DTiles 模型开启交互事件，如右键菜单、点击高亮、属性property展示、GIS/BIM 场景切换。
 
 当前功能主要应用于内部研发的RVT转3DTiles及IFC转3DTiles、glTF转3DTiles程序所转出的3DTiles模型。
 
@@ -61,20 +61,35 @@ export default {
       // 视角初始化
       uniCore.position.buildingPosition(uniCore.viewer, [113.12380548015745, 28.250758831850005, 700], -20, -45, 1);
 
+
+      // 模型示例1
       let options = {
-        id: '城市白膜'
+        id: '小别墅'
       }
       //加载3dtiles
       uniCore.model.createTileset('../../assets/3Dtiles/sample3_方法2_小别墅属性(1)/tileset.json', options).then(cityLeft => {
         uniCore.model.changeModelPos(cityLeft, [113.12098820449636, 28.256150218457687, 130], [0, 0, 0], [23.8, 23.8, 23.8])
-
-        // 开启右键菜单、点击高亮、属性property
-        uniCore.interact.setTilesRightClickMenu([{
-          id: '城市白膜',
-          url: '../../assets/3Dtiles/sample3_方法2_小别墅属性(1)/tileset.json',
-          propertysURL: '../../assets/3Dtiles/sample3_方法2_小别墅属性(1)/01 小别墅.json'
-        }], (property) => console.log(property));
       })
+
+      // 模型示例2
+      options = {
+        id: '小别墅2'
+      }
+      //加载3dtiles
+      uniCore.model.createTileset('../../assets/3Dtiles/sample3_方法2_小别墅属性(1)/tileset.json', options).then(cityLeft => {
+        uniCore.model.changeModelPos(cityLeft, [113.12098820449636, 28.267150218457687, 130], [0, 0, 0], [23.8, 23.8, 23.8])
+      })
+
+      // 开启右键菜单、点击高亮、属性property
+      uniCore.interact.setTilesRightClickMenu([{
+        id: '小别墅',
+        url: '../../assets/3Dtiles/sample3_方法2_小别墅属性(1)/tileset.json',
+        propertysURL: '../../assets/3Dtiles/sample3_方法2_小别墅属性(1)/01 小别墅.json'
+      }, {
+        id: '小别墅2',
+        url: '../../assets/3Dtiles/sample3_方法2_小别墅属性(1)/tileset.json',
+        propertysURL: '../../assets/3Dtiles/sample3_方法2_小别墅属性(1)/01 小别墅.json'
+      }], (property) => console.log(property));
 
     }
 
@@ -96,7 +111,7 @@ export default {
 
 ### 示例运行结果
 
-![Alt text](image-5.png)
+![Alt text](image-31.png)
 
 ### 关键代码
 
@@ -107,7 +122,11 @@ export default {
 ```js
 // 开启右键菜单、点击高亮、属性property
 uniCore.interact.setTilesRightClickMenu([{
-  id: '城市白膜',
+  id: '小别墅',
+  url: '../../assets/3Dtiles/sample3_方法2_小别墅属性(1)/tileset.json',
+  propertysURL: '../../assets/3Dtiles/sample3_方法2_小别墅属性(1)/01 小别墅.json'
+}, {
+  id: '小别墅2',
   url: '../../assets/3Dtiles/sample3_方法2_小别墅属性(1)/tileset.json',
   propertysURL: '../../assets/3Dtiles/sample3_方法2_小别墅属性(1)/01 小别墅.json'
 }], (property) => console.log(property));
