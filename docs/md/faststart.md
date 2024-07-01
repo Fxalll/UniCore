@@ -131,7 +131,7 @@ module.exports = defineConfig({
         })
       ]
     },
-    
+
     resolve: {
       alias: {},
       fallback: {
@@ -142,12 +142,13 @@ module.exports = defineConfig({
       },
       mainFiles: ['index', 'Cesium']
     },
-    plugins: [new NodePolyfillPlugin(), new webpack.ProvidePlugin({
-      $: "jquery",
-      jQuery: "jquery",
-      "window.jQuery": "jquery",
-      Popper: ["popper.js", "default"]
-    }),
+    plugins: [new NodePolyfillPlugin(),
+    //   new webpack.ProvidePlugin({
+    //   $: "jquery",
+    //   jQuery: "jquery",
+    //   "window.jQuery": "jquery",
+    //   Popper: ["popper.js", "default"]
+    // }),
     new CompressionPlugin({
       algorithm: 'gzip', // 使用gzip压缩
       test: /\.js$|\.html$|\.css$/, // 匹配文件名
@@ -235,3 +236,10 @@ accessToken 可联系开发者获取 Token 获取方法，下面为测试 token 
 ### 拓展
 
 在初次进行首屏加载时，可通过添加 [首屏加载动画](./fasttool/loadingScreen.md) 提升用户体验。
+
+引擎默认开启了抗锯齿效果，如需关闭，可在项目中添加如下代码。
+
+```js
+// 关闭抗锯齿
+uniCore.viewer.scene.postProcessStages.fxaa.enabled = false
+```

@@ -94,6 +94,7 @@ UniTip类
 | Name | Type | Description |
 | --- | --- | --- |
 | `id` | \* |  |
+| `bool` | \* | 是否隐藏（或显示） |
 
 <br><hr>
 
@@ -108,6 +109,38 @@ UniTip类
 | Name | Type | Description |
 | --- | --- | --- |
 | `id` | \* |  |
+| `bool` | \* | 是否隐藏（或显示） |
+
+<br><hr>
+
+<br>
+
+#### hideTipByText(id)
+
+根据text隐藏tip
+
+##### Parameters:
+
+| Name | Type | Description |
+| --- | --- | --- |
+| `text` | \* |  |
+| `bool` | \* | 是否隐藏（或显示） |
+
+<br><hr>
+
+<br>
+
+#### hideTipByIDText(id)
+
+根据id与text隐藏tip
+
+##### Parameters:
+
+| Name | Type | Description |
+| --- | --- | --- |
+| `id` | \* |  |
+| `text` | \* |  |
+| `bool` | \* | 是否隐藏（或显示） |
 
 <br><hr>
 

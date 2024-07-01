@@ -8,9 +8,12 @@ outline: deep
 
 ### 方法介绍
 
-UniCore 内置 Tip 类，提供 createHtmlTip 方法用于将HTML元素作为标签固定在场景中。
+UniCore 内置 Tip 类，提供 createHtmlTip 方法用于将 HTML 元素作为标签固定在场景中。
 
 `注：HTML 元素需使用 id 值。`
+<!-- 
+值得注意的是，如果你需要使用 GIS/BIM 场景切换功能，在右键菜单切换到 BIM 场景时无法自动隐藏此类标签。因为通用图形引擎无法确认哪一种 HTML 元素需要隐藏。为了避免隐藏到页面必要的 UI 组件，在使用右键菜单切换到 GIS/BIM 场景时利用回调函数使用 Javascript 原生方法隐藏需要隐藏的 HTML 元素。见 [3DTiles 模型开启交互事件（含 GIS/BIM 场景切换） - 关键代码](./setTilesRightClickMenu.md#关键代码) 。 -->
+
 
 该方法需传入两个变量，即id值、标签坐标。参见JSDoc形式如下：
 
@@ -128,13 +131,18 @@ uniCore.tip.createHtmlTip("test", [113.12098820449636, 28.256150218457687, 50], 
 
 ### 拓展
 
+以下列举其他类型的例子，你可以自行尝试。
+
+#### 图片
 你可以将图片等其他 HTML 元素固定在场景中，如图。
 
 ![Alt text](image-30.png)
 
+#### 组件
+
 你甚至可以将组件固定在场景中，以 [模型加载进度条组件](../fastcomponents/loadModelInfo.md) 为例。
 
-#### 代码示例
+##### 代码示例
 
 ```js
 <template>
@@ -220,7 +228,7 @@ export default {
 </style>
 ```
 
-#### 效果展示
+##### 效果展示
 
 ![Alt text](image-27.png)
 

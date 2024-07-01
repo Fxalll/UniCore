@@ -17,8 +17,10 @@ UniCore 内置 Interact 类，提供 setTilesRightClickMenu 方法用于开启3D
 ```js
 /**
  * 右键菜单功能
- * @param {*} modelList 即模型的optionsList，每个list包含模型id、模型url、模型属性文件url
- * @param {*} showPropertyFunc 右键菜单回调方法
+ * @param {*} modelList 
+ * @param {*} showPropertyFunc 右键菜单回调方法 默认为null
+ * @param {*} switchBIMFunc 切换到BIM场景时触发回调方法 默认为null
+ * @param {*} switchGISFunc 切换到GIS场景时触发回调方法 默认为null
  */
 ```
 
@@ -59,7 +61,7 @@ export default {
       uniCore.init("unicoreContainer");
 
       // 视角初始化
-      uniCore.position.buildingPosition(uniCore.viewer, [113.12380548015745, 28.250758831850005, 700], -20, -45, 1);
+      uniCore.position.buildingPosition(uniCore.viewer, [113.12198820449636, 28.254150218457687, 300], -20, -45, 1);
 
 
       // 模型示例1
@@ -68,7 +70,7 @@ export default {
       }
       //加载3dtiles
       uniCore.model.createTileset('../../assets/3Dtiles/sample3_方法2_小别墅属性(1)/tileset.json', options).then(cityLeft => {
-        uniCore.model.changeModelPos(cityLeft, [113.12098820449636, 28.256150218457687, 130], [0, 0, 0], [23.8, 23.8, 23.8])
+        uniCore.model.changeModelPos(cityLeft, [113.12098820449636, 28.256150218457687, 50])
       })
 
       // 模型示例2
@@ -77,7 +79,7 @@ export default {
       }
       //加载3dtiles
       uniCore.model.createTileset('../../assets/3Dtiles/sample3_方法2_小别墅属性(1)/tileset.json', options).then(cityLeft => {
-        uniCore.model.changeModelPos(cityLeft, [113.12098820449636, 28.267150218457687, 130], [0, 0, 0], [23.8, 23.8, 23.8])
+        uniCore.model.changeModelPos(cityLeft, [113.12098820449636, 28.257150218457687, 50])
       })
 
       // 开启右键菜单、点击高亮、属性property
@@ -89,7 +91,7 @@ export default {
         id: '小别墅2',
         url: '../../assets/3Dtiles/sample3_方法2_小别墅属性(1)/tileset.json',
         propertysURL: '../../assets/3Dtiles/sample3_方法2_小别墅属性(1)/01 小别墅.json'
-      }], (property) => console.log(property));
+      }], (property) => console.log(property), () => console.log("BIM"), () => console.log("GIS"));
 
     }
 
@@ -111,13 +113,19 @@ export default {
 
 ### 示例运行结果
 
-![Alt text](image-32.png)
+![Alt text](image-33.png)
+
+![Alt text](image-34.png)
 
 ### 关键代码
 
 你可以通过修改 setTilesRightClickMenu 中的变量查看修改这些变量带来的效果。
 
-在 console.log(property) 处可利用所获取的 property 编写前端属性窗口以供展示。
+在 `(property) => console.log(property)` 处可利用所获取的 property 编写前端属性窗口以供展示。
+
+在 `() => console.log("BIM")` 处可编写切换到 BIM 场景时所需执行的函数。
+
+在 `() => console.log("GIS")` 处可编写切换到 GIS 场景时所需执行的函数。
 
 ```js
 // 开启右键菜单、点击高亮、属性property
@@ -129,7 +137,7 @@ uniCore.interact.setTilesRightClickMenu([{
   id: '小别墅2',
   url: '../../assets/3Dtiles/sample3_方法2_小别墅属性(1)/tileset.json',
   propertysURL: '../../assets/3Dtiles/sample3_方法2_小别墅属性(1)/01 小别墅.json'
-}], (property) => console.log(property));
+}], (property) => console.log(property), () => console.log("BIM"), () => console.log("GIS"));
 ```
 
 ### 拓展

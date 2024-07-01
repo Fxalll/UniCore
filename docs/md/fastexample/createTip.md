@@ -113,4 +113,21 @@ uniCore.tip.createTip('标签组', "可点击标签-2", [113.12374548015745, 28.
 
 ### 拓展
 
-UniCore提供 getTipById 方法根据 id 查找标签，hideTipById 方法根据 id 隐藏标签。
+UniCore Tip 提供 getTipById 方法根据 id 查找标签，hideTipById 方法根据 id 和 bool 值隐藏标签，hideTipByText 根据 text 和 bool 值隐藏标签，hideTipByIDText 根据 id 与 text 和 bool 值隐藏标签。
+
+举个例子，hideTipById 方法的 JSDoc 如下：
+
+```js
+/**
+ * 根据id隐藏tip
+ * @param {*} id 
+ * @param {*} bool 是否隐藏（或显示）
+ */
+```
+
+在使用这些方法时，可以这么写：
+
+```js
+uniCore.tip.getTipById('标签组');
+uniCore.tip.hideTipById('标签组', true);
+```

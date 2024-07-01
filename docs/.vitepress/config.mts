@@ -42,7 +42,7 @@ export default defineConfig({
         ]
       },
       {
-        text: '1.1.5', items: [
+        text: '1.2.1', items: [
           { text: '版本更新', link: 'http://192.168.0.6:3000/cxyjy_zhjz/npm-unicore-sdk/commits/branch/main' }
         ]
       }
@@ -125,6 +125,7 @@ export default defineConfig({
           {
             text: '本地组件',
             items: [
+              { text: '图层管理树组件', link: '/md/fastcomponents/LayerControlSet' },
               { text: 'GIS / BIM 切换组件', link: '/md/fastcomponents/GisBimSwitch' },
               { text: '3DTiles 模型信息树组件', link: '/md/fastcomponents/ModelTreeSet' },
               { text: '模型属性窗口组件', link: '/md/fastcomponents/modelPropertyInfo' },

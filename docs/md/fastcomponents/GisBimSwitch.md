@@ -8,6 +8,8 @@ outline: deep
 
 通过 GIS / BIM 切换组件，能够在 GIS 功能与 BIM 功能之间自由切换。
 
+本文推荐使用右键菜单 [3DTiles 模型开启交互事件（含 GIS/BIM 场景切换）](../fastexample/setTilesRightClickMenu.md) 进行 GIS / BIM 切换。
+
 注：该功能使用了 elementUI 库，使用前需安装该库，具体方法见 [elementUI 安装](https://element.eleme.io/#/zh-CN/component/installation) 。
 
 不妨通过代码示例在 Vue 中尝试一下：

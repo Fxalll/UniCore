@@ -10,7 +10,7 @@ outline: deep
 
 UniCore 内置 Position 类，提供 lockTo 方法用于将摄像机锁定到某个经纬度坐标点上。该方法必须传入 viewer 对象及是否锁定视角的布尔值、所需定位的经纬度+高度的坐标数组。
 
-此外，lockTo 方法还提供 heading、pitch 两类可选变量以控制摄像机俯仰角。
+此外，lockTo 方法还提供 heading、pitch 两类可选变量以控制摄像机俯仰角，range 控制相机离模型的距离。
 
 变量的JSDoc形式如下：
 
@@ -22,6 +22,7 @@ UniCore 内置 Position 类，提供 lockTo 方法用于将摄像机锁定到某
   * @param {*} axis 
   * @param {*} heading 
   * @param {*} pitch 
+  * @param {*} range 
   */
 ```
 

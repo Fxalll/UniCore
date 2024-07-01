@@ -375,7 +375,7 @@ UniModels类
 
 #### getPrimitivesName(ignore)
 
-查询构件名称并归类
+查询构件名称并归类（注意，只会获取到有id的Primitive）
 
 ##### Parameters:
 

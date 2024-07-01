@@ -129,6 +129,7 @@ cartographic 弧度转经纬度
 | `axis` | \* |  |  |
 | `heading` | \* | 0 |  |
 | `pitch` | \* | 0 |  |
+| `range` | \* | 0 |  |
 
 <br><hr>
 
