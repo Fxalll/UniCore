@@ -2,11 +2,13 @@
 outline: deep
 ---
 
-# 所有模型显隐控制组件
+# 模型显隐控制组件
 
 ### 功能介绍
 
 自动获取当前场景所有模型，并能通过按钮控制对应模型级别的显隐。
+
+你可以使用 [图层管理树组件](./LayerControlSet.md) 代替此组件。
 
 注：该功能使用了 elementUI 库，使用前需安装该库，具体方法见 [elementUI 安装](https://element.eleme.io/#/zh-CN/component/installation) 。
 

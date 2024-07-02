@@ -10,6 +10,12 @@ outline: deep
 
 注：该功能使用了 elementUI 库，使用前需安装该库，具体方法见 [elementUI 安装](https://element.eleme.io/#/zh-CN/component/installation) 。
 
+注：该功能使用了 vue-giant-tree 库，使用前需安装该库（该组件库有BUG，如遇到报错可尝试先安装该组件库0.1.0版本，后安装该组件库1.0.0版本）：
+
+```sh
+npm install vue-giant-tree@1.0.0
+```
+
 
 
 不妨通过代码示例在 Vue 中尝试一下：
@@ -37,6 +43,7 @@ outline: deep
 
 <script type="text/javascript">
 import tree from 'vue-giant-tree'
+import * as Cesium from 'cesium'
 
 export default {
   components: {
@@ -66,7 +73,7 @@ export default {
   methods: {
 
     createVal () {
-      this.nodesList = { 'primitives': [], 'model': [], 'tip': [], 'html': [] }
+      this.nodesList = { 'primitives': [], 'model': [], 'tip': [], 'html': [], 'layer': [] }
     },
 
     init () {
@@ -76,6 +83,7 @@ export default {
       this.initComplexModelNodes();
       this.initTipNodes();
       this.initHTMLTipNodes();
+      this.initLayerNodes();
 
     },
 
@@ -210,7 +218,7 @@ export default {
 
     initTipNodes () {
       this.getTip();
-      if (Object.keys(this.nodesList['tip']).length !== 0) this.nodes.push({ checked: true, id: -2, name: "🌳 普通标签结构树", open: false, pid: -10000 })
+      if (Object.keys(this.nodesList['tip']).length !== 0) this.nodes.push({ checked: true, id: -2, name: "🌳 普通标签信息树", open: false, pid: -10000 })
       Object.entries(this.nodesList['tip']).forEach((e, index) => {
         // 将第一个index设为2开始，将-1留给pid使用
         index = this.idNum + 1
@@ -262,7 +270,27 @@ export default {
 
     },
 
+    initLayerNodes () {
+      this.getLayer();
+      if (this.nodesList['layer'].length !== 0) this.nodes.push({ checked: true, id: -4, name: "🌎 GIS数据", open: false, pid: -10000 })
 
+      this.nodesList['layer'].forEach((e, index) => {
+        // 将第一个index设为2开始，将-1留给pid使用
+        index = this.idNum + 1
+        // 计算使用了多少个idNum
+        this.idNum += 1
+
+        let newNode = {};
+        newNode.id = index + e.id;
+        newNode.pid = -4; // 底图数据id为-4
+        newNode.name = e.id;
+        newNode.checked = e.checked;
+        newNode.open = false;
+        this.nodes.push(newNode);
+
+      })
+
+    },
 
     getPrimitive () {
       this.nodesList['primitives'] = uniCore.model.getPrimitivesName();
@@ -307,6 +335,28 @@ export default {
 
     },
 
+    getLayer () {
+      // 底图
+      uniCore.viewer.imageryLayers._layers.forEach((e, index) => {
+        this.nodesList['layer'].push({ 'id': '底图数据-' + index + 1, 'tile': e, 'checked': true });
+
+      })
+      // 地形
+      if (!!uniCore.viewer.terrainProvider) {
+        this.nodesList['layer'].push({ 'id': '地形数据', 'tile': uniCore.viewer.terrainProvider, 'checked': true });
+        window.terrainProvider = uniCore.viewer.terrainProvider;
+      }
+
+      // 自带天体、天空盒
+      this.nodesList['layer'].push({ 'id': '月球', 'tile': uniCore.viewer.scene.moon, 'checked': uniCore.viewer.scene.moon.show });
+      this.nodesList['layer'].push({ 'id': '太阳', 'tile': uniCore.viewer.scene.sun, 'checked': uniCore.viewer.scene.sun.show });
+      this.nodesList['layer'].push({ 'id': '雾气', 'tile': uniCore.viewer.scene.fog, 'checked': uniCore.viewer.scene.fog.show });
+      this.nodesList['layer'].push({ 'id': '天空盒', 'tile': uniCore.viewer.scene.skyBox, 'checked': uniCore.viewer.scene.skyBox.show });
+      this.nodesList['layer'].push({ 'id': '大气层', 'tile': uniCore.viewer.scene.skyAtmosphere, 'checked': uniCore.viewer.scene.skyAtmosphere.show });
+      this.nodesList['layer'].push({ 'id': '地球', 'tile': uniCore.viewer.scene.globe, 'checked': uniCore.viewer.scene.globe.show });
+
+    },
+
     onCheck (evt, treeId, treeNode) {
       let that = this;
       getParentNodes(treeNode);
@@ -338,23 +388,17 @@ export default {
               that.setModelTree(treeNode);
             }
           } else if (parentNode.id === -2) {
-            // 标签结构树
+            // 普通标签信息树
             that.setTipTree(treeNode);
 
           } else if (parentNode.id === -3) {
-            // HTML标签结构树
+            // HTML标签信息树
             that.setHTMLTipTree(treeNode);
 
+          } else if (parentNode.id === -4) {
+            // 底图数据
+            that.setLayer(treeNode);
           }
-
-
-
-
-
-
-
-
-
 
         }
       }
@@ -516,6 +560,43 @@ export default {
       })
     },
 
+    /**
+     * 设置底图数据
+     */
+    setLayer (treeNode) {
+      let that = this;
+      // 找到节点下所有的子节点
+      let allNode = [];
+      let findChild = function (array) {
+
+        if (array.hasOwnProperty("children")) {
+          for (let i = 0; i < array.children.length; i++) {
+            findChild(array.children[i])
+          }
+        } else {
+          allNode.push({ "id": array.name, "tile": that.nodesList['layer'].find(e => { if (e.id === array.name) return e })?.tile, 'checked': array.checked })
+        }
+
+      }
+
+      findChild(treeNode)
+      console.log(allNode);
+
+      allNode.forEach(e => {
+        if (e.id === '地形数据') {
+          // console.log(uniCore.viewer.terrainProvider);
+          uniCore.viewer.terrainProvider = e.checked === true ? window.terrainProvider : new Cesium.EllipsoidTerrainProvider({});
+        } else if (e.id.split('-')[0] === '底图数据') {
+          // 底图数据
+          e.tile.show = e.checked
+        } else {
+          // 天体、天空盒
+          e.tile.show = e.checked
+        }
+      })
+
+    },
+
     handleCreated: function (ztreeObj) {
       this.ztreeObj = ztreeObj;
       // onCreated 中操作ztreeObj对象展开第一个节点
@@ -612,6 +693,8 @@ import { config } from 'unicore-sdk/unicore.config'
 import 'unicore-sdk/Widgets/widgets.css'
 import lcSet from '@/components/LayerControlSet/index.vue'; //图层管理树组件
 
+import * as Cesium from 'cesium'
+
 export default {
 
   components: {
@@ -650,7 +733,21 @@ export default {
         propertysURL: '../../assets/3Dtiles/sample3_方法2_小别墅属性(1)/01 小别墅.json'
       }
       //加载3dtiles
-      uniCore.model.createTileset(options.url, options).then(cityModel => {
+      uniCore.model.createTileset(options.url, options, (tileset) => {
+        let customShader = new Cesium.CustomShader({
+          // lightingModel: Cesium.LightingModel.UNLIT,
+          lightingModel: Cesium.LightingModel.PBR,
+          //片元着色器
+          fragmentShaderText: `
+          void fragmentMain(FragmentInput fsInput, inout czm_modelMaterial material) {
+            vec3 positionMC = fsInput.attributes.positionMC;
+            //此处以下为光线效果
+            material.diffuse += material.diffuse * (1.0);
+          }`
+        })
+
+        tileset.customShader = customShader
+      }).then(cityModel => {
         uniCore.model.changeModelPos(cityModel, [113.12098820449636, 28.256150218457687, 130], [0, 0, 0], [23.8, 23.8, 23.8])
 
         // 绑定信息树
@@ -679,6 +776,19 @@ export default {
         }
         this.$refs.lcSetId.nodesList['model'].push(modelOption)
       })
+
+      // 开启右键菜单、点击高亮、属性property
+      uniCore.interact.setTilesRightClickMenu([{
+        id: '小别墅1号示例',
+        url: '../../assets/3Dtiles/sample3_方法2_小别墅属性(1)/tileset.json',
+        propertysURL: '../../assets/3Dtiles/sample3_方法2_小别墅属性(1)/01 小别墅.json'
+      }, {
+        id: '小别墅2号示例',
+        url: '../../assets/3Dtiles/sample3_方法2_小别墅属性(1)/tileset.json',
+        propertysURL: '../../assets/3Dtiles/sample3_方法2_小别墅属性(1)/01 小别墅.json'
+      }], (property) => console.log(property), () => console.log("BIM"), () => console.log("GIS"));
+
+
 
       // 加入墙体图元 primitives
       uniCore.model.paintWall("墙体测试", [[113.12380548015745, 28.260758831850005], [113.12380548015745, 28.240758831850005]], 500, 100, "#e46962")
@@ -747,9 +857,11 @@ export default {
 
 ### 示例运行结果
 
-![Alt text](image-12.png)
+![Alt text](image-17.png)
 
-![Alt text](image-13.png)
+![Alt text](image-15.png)
+
+![Alt text](image-16.png)
 
 ### 调用代码示例中的关键代码
 
@@ -769,3 +881,7 @@ this.$refs.lcSetId.nodesList['model'].push(modelOption)
 ```js
 this.$refs.lcSetId.init();
 ```
+
+### 拓展
+
+本文在加载模型时还使用了 [利用回调函数改变模型着色器](../fastexample/createTileset.md#利用回调函数改变模型着色器-如亮度) 的方法调整了单独示例模型的亮度，使其展示效果更好。

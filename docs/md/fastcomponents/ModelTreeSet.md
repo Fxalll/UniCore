@@ -8,6 +8,8 @@ outline: deep
 
 通过 3DTiles 模型的属性信息及构件ID，能够生成该模型的信息树（构件树）。信息树不仅提供可视化展示构件层级的功能，还能够通过按钮控制对应构件类别的显隐。
 
+你可以使用 [图层管理树组件](./LayerControlSet.md) 代替此组件。
+
 注：该功能使用了 elementUI 库，使用前需安装该库，具体方法见 [elementUI 安装](https://element.eleme.io/#/zh-CN/component/installation) 。
 
 注：该功能使用了 vue-giant-tree 库，使用前需安装该库（该组件库有BUG，如遇到报错可尝试先安装该组件库0.1.0版本，后安装该组件库1.0.0版本）：

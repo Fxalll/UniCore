@@ -42,7 +42,7 @@ export default defineConfig({
         ]
       },
       {
-        text: '1.2.1', items: [
+        text: '1.2.3', items: [
           { text: '版本更新', link: 'http://192.168.0.6:3000/cxyjy_zhjz/npm-unicore-sdk/commits/branch/main' }
         ]
       }
@@ -130,7 +130,8 @@ export default defineConfig({
               { text: '3DTiles 模型信息树组件', link: '/md/fastcomponents/ModelTreeSet' },
               { text: '模型属性窗口组件', link: '/md/fastcomponents/modelPropertyInfo' },
               { text: '模型加载进度条组件', link: '/md/fastcomponents/loadModelInfo' },
-              { text: '所有模型显隐控制组件', link: '/md/fastcomponents/showModelSet' },
+              { text: '模型显隐控制组件', link: '/md/fastcomponents/showModelSet' },
+              { text: '底图分割组件', link: '/md/fastcomponents/LayerSplitSet' },
             ],
             collapsed: false
           },
