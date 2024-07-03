@@ -42,7 +42,7 @@ export default defineConfig({
         ]
       },
       {
-        text: '1.2.3', items: [
+        text: '1.2.7', items: [
           { text: '版本更新', link: 'http://192.168.0.6:3000/cxyjy_zhjz/npm-unicore-sdk/commits/branch/main' }
         ]
       }
@@ -93,7 +93,7 @@ export default defineConfig({
             text: '模型操作',
             items: [
               { text: '模型剪切', link: '/md/fastexample/cutModel' },
-              { text: '3DTiles 模型开启交互事件（含 GIS/BIM 场景切换）', link: '/md/fastexample/setTilesRightClickMenu' },
+              { text: '模型右键菜单（含 GIS/BIM 场景切换）', link: '/md/fastexample/setTilesRightClickMenu' },
               { text: '模型压平', link: '/md/fastexample/flat' },
               { text: '模型显隐功能', link: '/md/fastexample/setPrimitivesShow' },
             ],
@@ -126,12 +126,13 @@ export default defineConfig({
             text: '本地组件',
             items: [
               { text: '图层管理树组件', link: '/md/fastcomponents/LayerControlSet' },
+              { text: 'BIM 场景视图盒子组件', link: '/md/fastcomponents/BimCubeSet' },
               { text: 'GIS / BIM 切换组件', link: '/md/fastcomponents/GisBimSwitch' },
               { text: '3DTiles 模型信息树组件', link: '/md/fastcomponents/ModelTreeSet' },
               { text: '模型属性窗口组件', link: '/md/fastcomponents/modelPropertyInfo' },
               { text: '模型加载进度条组件', link: '/md/fastcomponents/loadModelInfo' },
               { text: '模型显隐控制组件', link: '/md/fastcomponents/showModelSet' },
-              { text: '底图分割组件', link: '/md/fastcomponents/LayerSplitSet' },
+              { text: '多底图分屏组件', link: '/md/fastcomponents/LayerSplitSet' },
             ],
             collapsed: false
           },

@@ -51,7 +51,7 @@ import $ from 'jquery'; // 引入jQuery
 export default {
   data () {
     return {
-      tilespanelShow: true,
+      tilespanelShow: false,
     }
   },
 

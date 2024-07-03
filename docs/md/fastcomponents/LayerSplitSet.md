@@ -2,7 +2,7 @@
 outline: deep
 ---
 
-# 底图分割组件
+# 多底图分屏组件
 
 ### 功能介绍
 
@@ -87,7 +87,7 @@ export default {
   background-color: #d3d3d3;
   width: 5px;
   height: 100%;
-  z-index: 9999;
+  z-index: 1;
 }
 
 #slider:hover {
@@ -183,7 +183,7 @@ export default {
 
 ```js
 new Cesium.UrlTemplateImageryProvider({
-    url: "https://{s}.basemaps.cartocdn.com/dark_all/{z}/{x}/{y}.png ",
+    url: "https://tile-{s}.openstreetmap.fr/hot/{z}/{x}/{y}.png",
     subdomains: ["a", "b", "c", "d"],
 })
 ```
@@ -198,7 +198,7 @@ new Cesium.UrlTemplateImageryProvider({
 
 ```js
 new Cesium.UrlTemplateImageryProvider({
-    url: "https://tile-{s}.openstreetmap.fr/hot/{z}/{x}/{y}.png",
+    url: "https://{s}.basemaps.cartocdn.com/dark_all/{z}/{x}/{y}.png",
     subdomains: ["a", "b", "c", "d"],
 })
 ```

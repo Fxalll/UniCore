@@ -76,8 +76,8 @@ export default {
       this.nodesList = { 'primitives': [], 'model': [], 'tip': [], 'html': [], 'layer': [] }
     },
 
-    init () {
-
+    init (uniCore) {
+      window.uniCore = uniCore;
       this.nodes = [];
       this.initPrimitiveNodes();
       this.initComplexModelNodes();
@@ -131,7 +131,7 @@ export default {
         newNode.open = false;
         this.nodes.push(newNode);
 
-        uniCore.model.fetchPropertys(e.propertysURL).then((data) => {
+        window.uniCore.model.fetchPropertys(e.propertysURL).then((data) => {
 
           data.forEach((ele, i) => {
             // 这里可以设置radio变量为按楼层过滤、按类名过滤或是按族family过滤
@@ -293,7 +293,7 @@ export default {
     },
 
     getPrimitive () {
-      this.nodesList['primitives'] = uniCore.model.getPrimitivesName();
+      this.nodesList['primitives'] = window.uniCore.model.getPrimitivesName();
     },
 
     getTip () {
@@ -337,23 +337,23 @@ export default {
 
     getLayer () {
       // 底图
-      uniCore.viewer.imageryLayers._layers.forEach((e, index) => {
-        this.nodesList['layer'].push({ 'id': '底图数据-' + index + 1, 'tile': e, 'checked': true });
+      window.viewer.imageryLayers._layers.forEach((e, index) => {
+        this.nodesList['layer'].push({ 'id': '底图数据-' + (index + 1), 'tile': e, 'checked': true });
 
       })
       // 地形
-      if (!!uniCore.viewer.terrainProvider) {
-        this.nodesList['layer'].push({ 'id': '地形数据', 'tile': uniCore.viewer.terrainProvider, 'checked': true });
-        window.terrainProvider = uniCore.viewer.terrainProvider;
+      if (!!window.viewer.terrainProvider) {
+        this.nodesList['layer'].push({ 'id': '地形数据', 'tile': window.viewer.terrainProvider, 'checked': true });
+        window.terrainProvider = window.viewer.terrainProvider;
       }
 
       // 自带天体、天空盒
-      this.nodesList['layer'].push({ 'id': '月球', 'tile': uniCore.viewer.scene.moon, 'checked': uniCore.viewer.scene.moon.show });
-      this.nodesList['layer'].push({ 'id': '太阳', 'tile': uniCore.viewer.scene.sun, 'checked': uniCore.viewer.scene.sun.show });
-      this.nodesList['layer'].push({ 'id': '雾气', 'tile': uniCore.viewer.scene.fog, 'checked': uniCore.viewer.scene.fog.show });
-      this.nodesList['layer'].push({ 'id': '天空盒', 'tile': uniCore.viewer.scene.skyBox, 'checked': uniCore.viewer.scene.skyBox.show });
-      this.nodesList['layer'].push({ 'id': '大气层', 'tile': uniCore.viewer.scene.skyAtmosphere, 'checked': uniCore.viewer.scene.skyAtmosphere.show });
-      this.nodesList['layer'].push({ 'id': '地球', 'tile': uniCore.viewer.scene.globe, 'checked': uniCore.viewer.scene.globe.show });
+      this.nodesList['layer'].push({ 'id': '月球', 'tile': window.viewer.scene.moon, 'checked': window.viewer.scene.moon.show });
+      this.nodesList['layer'].push({ 'id': '太阳', 'tile': window.viewer.scene.sun, 'checked': window.viewer.scene.sun.show });
+      this.nodesList['layer'].push({ 'id': '雾气', 'tile': window.viewer.scene.fog, 'checked': window.viewer.scene.fog.show });
+      this.nodesList['layer'].push({ 'id': '天空盒', 'tile': window.viewer.scene.skyBox, 'checked': window.viewer.scene.skyBox.show });
+      this.nodesList['layer'].push({ 'id': '大气层', 'tile': window.viewer.scene.skyAtmosphere, 'checked': window.viewer.scene.skyAtmosphere.show });
+      this.nodesList['layer'].push({ 'id': '地球', 'tile': window.viewer.scene.globe, 'checked': window.viewer.scene.globe.show });
 
     },
 
@@ -372,7 +372,7 @@ export default {
             node.children.forEach(nodes => {
               if (nodes.checked) primitivesShowList.push(nodes.name);
             })
-            uniCore.model.setPrimitivesShow(primitivesShowList)
+            window.uniCore.model.setPrimitivesShow(primitivesShowList)
 
 
           } else if (parentNode.id === -1) {
@@ -524,7 +524,7 @@ export default {
       findChild(treeNode)
 
       allNode.forEach(e => {
-        uniCore.tip.hideTipByIDText(e.id, e.text, !e.checked);
+        window.uniCore.tip.hideTipByIDText(e.id, e.text, !e.checked);
       })
 
 
@@ -580,12 +580,11 @@ export default {
       }
 
       findChild(treeNode)
-      console.log(allNode);
 
-      allNode.forEach(e => {
+      allNode.forEach(async e => {
         if (e.id === '地形数据') {
-          // console.log(uniCore.viewer.terrainProvider);
-          uniCore.viewer.terrainProvider = e.checked === true ? window.terrainProvider : new Cesium.EllipsoidTerrainProvider({});
+          // console.log(window.viewer.terrainProvider);
+          window.viewer.terrainProvider = e.checked === true ? window.terrainProvider : new Cesium.EllipsoidTerrainProvider({});
         } else if (e.id.split('-')[0] === '底图数据') {
           // 底图数据
           e.tile.show = e.checked
@@ -786,7 +785,7 @@ export default {
         id: '小别墅2号示例',
         url: '../../assets/3Dtiles/sample3_方法2_小别墅属性(1)/tileset.json',
         propertysURL: '../../assets/3Dtiles/sample3_方法2_小别墅属性(1)/01 小别墅.json'
-      }], (property) => console.log(property), () => console.log("BIM"), () => console.log("GIS"));
+      }], (property) => console.log(property), (pickObj) => console.log(pickObj), () => console.log("BIM"), () => console.log("GIS"));
 
 
 
@@ -813,7 +812,7 @@ export default {
       // 原本设计是作为开关调用的，这里使用定时器先展示功能
       setTimeout(() => {
         // 图层树初始化
-        this.$refs.lcSetId.init();
+        this.$refs.lcSetId.init(uniCore);
       }, 1000)
 
     }
@@ -876,10 +875,10 @@ let modelOption = {
 this.$refs.lcSetId.nodesList['model'].push(modelOption)
 ```
 
-调用初始化：
+调用初始化（需要将实例化的uniCore传入）：
 
 ```js
-this.$refs.lcSetId.init();
+this.$refs.lcSetId.init(uniCore);
 ```
 
 ### 拓展

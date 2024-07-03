@@ -2,7 +2,7 @@
 outline: deep
 ---
 
-# 3DTiles 模型开启交互事件（含 GIS/BIM 场景切换）
+# 模型右键菜单（含 GIS/BIM 场景切换）
 
 ## Interact 类的方法 - setTilesRightClickMenu
 
@@ -10,7 +10,9 @@ outline: deep
 
 UniCore 内置 Interact 类，提供 setTilesRightClickMenu 方法用于开启3DTiles 模型开启交互事件，如右键菜单、点击高亮、属性property展示、GIS/BIM 场景切换。
 
-当前功能主要应用于内部研发的RVT转3DTiles及IFC转3DTiles、glTF转3DTiles程序所转出的3DTiles模型。
+建议同时使用组件 [BIM 场景视图盒子组件](../fastcomponents/BimCubeSet.md) 以更好地控制视角与摄像机。
+
+`当前功能主要应用于内部研发的RVT转3DTiles及IFC转3DTiles、glTF转3DTiles程序所转出的3DTiles模型`
 
 变量的JSDoc形式如下：
 
@@ -91,7 +93,7 @@ export default {
         id: '小别墅2',
         url: '../../assets/3Dtiles/sample3_方法2_小别墅属性(1)/tileset.json',
         propertysURL: '../../assets/3Dtiles/sample3_方法2_小别墅属性(1)/01 小别墅.json'
-      }], (property) => console.log(property), () => console.log("BIM"), () => console.log("GIS"));
+      }], (property) => console.log(property), (pickObj) => console.log(`右键获取该构件: ${pickObj}`), (pickObj) => console.log(`已切换至BIM场景: ${pickObj}`), (pickObj) => console.log(`已切换至GIS场景: ${pickObj}`));
 
     }
 
@@ -121,11 +123,13 @@ export default {
 
 你可以通过修改 setTilesRightClickMenu 中的变量查看修改这些变量带来的效果。
 
-在 `(property) => console.log(property)` 处可利用所获取的 property 编写前端属性窗口以供展示。
+在 ``(property) => console.log(property)`` 处可利用所获取的 property 编写前端属性窗口以供展示。
 
-在 `() => console.log("BIM")` 处可编写切换到 BIM 场景时所需执行的函数。
+在 ``(pickObj) => console.log(`右键获取该构件: ${pickObj}`)`` 处可获取使用右键时点击到的对应构件。
 
-在 `() => console.log("GIS")` 处可编写切换到 GIS 场景时所需执行的函数。
+在 ``(pickObj) => console.log(`已切换至BIM场景: ${pickObj}`)`` 处可编写切换到 BIM 场景时所需执行的函数。
+
+在 ``(pickObj) => console.log(`已切换至GIS场景: ${pickObj}`)`` 处可编写切换到 GIS 场景时所需执行的函数。
 
 ```js
 // 开启右键菜单、点击高亮、属性property
@@ -137,7 +141,7 @@ uniCore.interact.setTilesRightClickMenu([{
   id: '小别墅2',
   url: '../../assets/3Dtiles/sample3_方法2_小别墅属性(1)/tileset.json',
   propertysURL: '../../assets/3Dtiles/sample3_方法2_小别墅属性(1)/01 小别墅.json'
-}], (property) => console.log(property), () => console.log("BIM"), () => console.log("GIS"));
+}], (property) => console.log(property), (pickObj) => console.log(`右键获取该构件: ${pickObj}`), (pickObj) => console.log(`已切换至BIM场景: ${pickObj}`), (pickObj) => console.log(`已切换至GIS场景: ${pickObj}`));
 ```
 
 ### 拓展

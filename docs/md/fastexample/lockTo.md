@@ -12,6 +12,8 @@ UniCore 内置 Position 类，提供 lockTo 方法用于将摄像机锁定到某
 
 此外，lockTo 方法还提供 heading、pitch 两类可选变量以控制摄像机俯仰角，range 控制相机离模型的距离。
 
+你可以在使用视角锁定某一点时使用组件 [BIM 场景视图盒子组件](../fastcomponents/BimCubeSet.md#拓展) 以更好地控制视角与摄像机。
+
 变量的JSDoc形式如下：
 
 ```js
