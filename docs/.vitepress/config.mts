@@ -42,7 +42,7 @@ export default defineConfig({
         ]
       },
       {
-        text: '1.2.7', items: [
+        text: '1.2.8', items: [
           { text: '版本更新', link: 'http://192.168.0.6:3000/cxyjy_zhjz/npm-unicore-sdk/commits/branch/main' }
         ]
       }
