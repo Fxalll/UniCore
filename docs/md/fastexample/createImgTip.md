@@ -76,6 +76,7 @@ export default {
         alignedAxis: Cesium.Cartesian3.ZERO, // default
         width: 100, // default: undefined
         height: 25, // default: undefined
+        sizeInMeters: true, // 随缩放而缩放
       }
       uniCore.tip.createImgTip('图片标签', "../static/img/ui/shezhi.png", [113.12248820449636, 28.254850218457687, 100], options, () => { alert("你点击到了图片标签") })
 
@@ -127,6 +128,11 @@ let options = {
   alignedAxis: Cesium.Cartesian3.ZERO, // default
   width: 100, // default: undefined
   height: 25, // default: undefined
+  sizeInMeters: true, // 随缩放而缩放
 }
 uniCore.tip.createImgTip('图片标签', "../static/img/ui/shezhi.png", [113.12248820449636, 28.254850218457687, 70], options, () => { alert("你点击到了图片标签") })
 ```
+
+### 拓展
+
+你可以在 `window.viewer.entities._entities._array` 中找到图片标签的 entities 。

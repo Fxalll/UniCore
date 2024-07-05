@@ -194,15 +194,16 @@ export default {
       uniCore.tip.createHtmlTip("test2", [113.12374548015745, 28.256150218457687, 50], false)
 
       // 加入图片标签
-      uniCore.tip.createImgTip('图片标签', "../static/img/ui/shezhi.png", [113.12248820449636, 28.254850218457687, 70], null, () => { alert("你点击到了图片标签") })
+      let picID = '图片标签';
+      let picOptions = {
+        scale: 0.2, // default: 1.0
+        sizeInMeters: true,
+      }
+      uniCore.tip.createImgTip(picID, "../static/img/tips/camera.png", [113.12248820449636, 28.254850218457687, 70], picOptions, () => { alert("你点击到了图片标签") })
+      // 获取图片标签entities
+      let picTip;
+      window.viewer.entities._entities._array.forEach(e => { if (e.id === picID) { picTip = e } });
 
-
-      // 多底图分屏，载入 openstreetmap 底图
-      this.$refs.lsSetId.init(new Cesium.UrlTemplateImageryProvider({
-        url: "https://tile.openstreetmap.bzh/br/{z}/{x}/{y}.png",
-        subdomains: ["a", "b", "c", "d"],
-
-      }));
 
       // 加入运动小车
       uniCore.model.addGltf({
@@ -225,9 +226,20 @@ export default {
         uniCore.animation.updatePosition(axis, (resAxis, index) => {
           // 根据实时坐标修改路径和偏转角
           uniCore.model.changeModelPos(cityModel, resAxis, [uniCore.animation.caluRealTimeRotate(axis, index), 0, 0], [20, 20, 20]);
-        }, () => { console.log("finish!") }, 2, 0.01, [cityModel])
+
+          // 图片标签跟随
+          picTip.position._value = uniCore.position.axis2cartesian3([resAxis[0], resAxis[1], resAxis[2] + 100])
+
+        }, () => { console.log("finish!") }, 5, 0.01, [cityModel, picTip])
       })
 
+
+      // 多底图分屏，载入 openstreetmap 底图
+      this.$refs.lsSetId.init(new Cesium.UrlTemplateImageryProvider({
+        url: "https://tile.openstreetmap.bzh/br/{z}/{x}/{y}.png",
+        subdomains: ["a", "b", "c", "d"],
+
+      }));
 
       // 原本设计是作为开关调用的，这里使用定时器先展示功能
       setTimeout(() => {
