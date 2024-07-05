@@ -40,7 +40,7 @@ GIS/BIM 切换：
 
 ```vue
 <template>
-  <div id="unicoreContainer">
+  <div id="unicoreContainer" @click="mouseClick($event)">
     <!-- HTML 标签测试开始 -->
     <div id="test">你可以将任意HTML元素固定在某处</div>
     <div id="test2">这是第二个HTML标签</div>
@@ -100,7 +100,7 @@ export default {
       uniCore.init("unicoreContainer");
 
       // 视角初始化
-      uniCore.position.buildingPosition(uniCore.viewer, [113.12380548015745, 28.250758831850005, 700], -20, -45, 1);
+      uniCore.position.buildingPosition(uniCore.viewer, [113.1260943923287, 28.23651730759447, 2000], -20, -45, 1);
 
       // 模型示例1
       // 开始触发加载进度条
@@ -193,6 +193,9 @@ export default {
       uniCore.tip.createHtmlTip("test", [113.12098820449636, 28.256150218457687, 130], false)
       uniCore.tip.createHtmlTip("test2", [113.12374548015745, 28.256150218457687, 50], false)
 
+      // 加入图片标签
+      uniCore.tip.createImgTip('图片标签', "../static/img/ui/shezhi.png", [113.12248820449636, 28.254850218457687, 70], null, () => { alert("你点击到了图片标签") })
+
 
       // 多底图分屏，载入 openstreetmap 底图
       this.$refs.lsSetId.init(new Cesium.UrlTemplateImageryProvider({
@@ -201,12 +204,41 @@ export default {
 
       }));
 
+      // 加入运动小车
+      uniCore.model.addGltf({
+        lon: 0,
+        lat: 0,
+        height: 0
+      }, {
+        id: "车",
+        name: null,
+        url: '../../../assets/gltf/CesiumMilkTruck.glb',
+        property: null
+      }).then(cityModel => {
+        let axis = [[113.11743080396153, 28.239682643150296]
+          , [113.11725785946352, 28.248622077135227]
+          , [113.13152129373469, 28.24872127157565]
+          , [113.13140943384197, 28.26102384106443]
+          , [113.1181019813925, 28.2610317815719]
+          , [113.11806215469495, 28.25746976282241]
+        ];
+        uniCore.animation.updatePosition(axis, (resAxis, index) => {
+          // 根据实时坐标修改路径和偏转角
+          uniCore.model.changeModelPos(cityModel, resAxis, [uniCore.animation.caluRealTimeRotate(axis, index), 0, 0], [20, 20, 20]);
+        }, () => { console.log("finish!") }, 2, 0.01, [cityModel])
+      })
+
+
       // 原本设计是作为开关调用的，这里使用定时器先展示功能
       setTimeout(() => {
         // 图层树初始化
         this.$refs.lcSetId.init(uniCore);
-      }, 1000)
+      }, 3000)
 
+    },
+
+    mouseClick (e) {
+      console.log(window.uniCore.position.screen2axis(uniCore.viewer, e));
     }
 
   }

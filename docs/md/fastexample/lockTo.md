@@ -100,3 +100,11 @@ export default {
 ```js
 uniCore.position.lockTo(viewer, true, [113.12143453385162, 28.256011465656002, 46], -20, -45);
 ```
+
+### 拓展
+
+当你添加模型时，获取模型的entity后，你还可以使用以下代码将视角锁定在模型上。
+
+```js
+window.viewer.trackedEntity = entity;
+```

@@ -42,7 +42,7 @@ export default defineConfig({
         ]
       },
       {
-        text: '1.2.8', items: [
+        text: '1.3.4', items: [
           { text: '版本更新', link: 'http://192.168.0.6:3000/cxyjy_zhjz/npm-unicore-sdk/commits/branch/main' }
         ]
       }
@@ -100,6 +100,13 @@ export default defineConfig({
             collapsed: false
           },
           {
+            text: '模型动画',
+            items: [
+              { text: '模型贴地移动', link: '/md/fastexample/updatePosition' },
+            ],
+            collapsed: false
+          },
+          {
             text: '场景操作',
             items: [
               { text: '开启地下模式', link: '/md/fastexample/undergroundMode' },
@@ -111,6 +118,7 @@ export default defineConfig({
               { text: '绘制多段线条', link: '/md/fastexample/paintLine' },
               { text: '绘制墙体', link: '/md/fastexample/paintWall' },
               { text: '根据坐标创建一个标签', link: '/md/fastexample/createTip' },
+              { text: '根据坐标创建一个图片标签', link: '/md/fastexample/createImgTip' },
               { text: '将HTML元素作为标签', link: '/md/fastexample/createHtmlTip' },
             ],
             collapsed: false
@@ -192,6 +200,7 @@ export default defineConfig({
           { text: 'Tip', link: '/md/fastapi/Tip' },
           { text: 'Interact', link: '/md/fastapi/Interact' },
           { text: 'Database', link: '/md/fastapi/Database' },
+          { text: 'Animation', link: '/md/fastapi/Animation' },
           { text: 'Flat', link: '/md/fastapi/Flat' },
           { text: 'TerrainClip', link: '/md/fastapi/TerrainClip' },
           { text: 'Service', link: '/md/fastapi/Service' },

@@ -53,6 +53,24 @@ UniTip类
 
 <br>
 
+#### createImgTip(id, url, axis, options = {}, callback = null)
+
+创建图片标签
+
+##### Parameters:
+
+| Name | Type | Default | Description |
+| --- | --- | --- | --- |
+| `id` | \* |  | id值 |
+| `url` | \* |  | 图片url |
+| `axis` | \* |  | 坐标 |
+| `options` | \* | {} | 设置 |
+| `callback` | \* | #null | 点击回调函数 |
+
+<br><hr>
+
+<br>
+
 #### createHtmlTip(id, text)
 
 将HTML元素作为标签
