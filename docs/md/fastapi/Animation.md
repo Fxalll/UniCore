@@ -14,7 +14,7 @@ UniAnimation类
 
 ### Methods
 
-#### updatePosition(startAxis, endAxis, callback = null, speed = 5, stepTime = 0.01, exclude = [])
+#### updatePosition(axisList, realTimeCallback, finishCallback = null, speed = 5, stepTime = 0.01, exclude = [])
 
 获取两个坐标间贴地/模型的实时坐标
 

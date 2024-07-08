@@ -86,12 +86,12 @@ export default {
         name: null,
         url: '../../../assets/gltf/CesiumMilkTruck.glb',
         property: null
-      }).then(cityModel => {
+      }).then(carModel => {
         let axis = [[113.12022464274082, 28.25619028746274], [113.12161934465712, 28.256137318482835], [113.12091905012934, 28.256699622636106], [113.1209893840498, 28.25591814354084]];
         uniCore.animation.updatePosition(axis, (resAxis, index) => {
           // 根据实时坐标修改路径和偏转角
-          uniCore.model.changeModelPos(cityModel, resAxis, [uniCore.animation.caluRealTimeRotate(axis, index), 0, 0]);
-        }, () => { console.log("finish!") }, 5, 0.01, [cityModel])
+          uniCore.model.changeModelPos(carModel, resAxis, [uniCore.animation.caluRealTimeRotate(axis, index), 0, 0]);
+        }, () => { console.log("finish!") }, 5, 0.01, [carModel])
       })
 
 
@@ -137,8 +137,8 @@ export default {
 let axis = [[113.12022464274082, 28.25619028746274], [113.12161934465712, 28.256137318482835], [113.12091905012934, 28.256699622636106], [113.1209893840498, 28.25591814354084]];
 uniCore.animation.updatePosition(axis, (resAxis, index) => {
   // 根据实时坐标修改路径和偏转角
-  uniCore.model.changeModelPos(cityModel, resAxis, [uniCore.animation.caluRealTimeRotate(axis, index), 0, 0]);
-}, () => { console.log("finish!") }, 5, 0.01, [cityModel])
+  uniCore.model.changeModelPos(carModel, resAxis, [uniCore.animation.caluRealTimeRotate(axis, index), 0, 0]);
+}, () => { console.log("finish!") }, 5, 0.01, [carModel])
 ```
 
 ### 拓展
@@ -148,13 +148,13 @@ uniCore.animation.updatePosition(axis, (resAxis, index) => {
 另外的，在本文示例中，如果发现模型方位角的旋转有问题，你可以通过修改关键代码中的 changeModelPos 方法中的 `uniCore.animation.caluRealTimeRotate(axis, index)` 尝试修正，比如增加90度：
 
 ```js
-uniCore.model.changeModelPos(cityModel, resAxis, [uniCore.animation.caluRealTimeRotate(axis, index) + 90, 0, 0]);
+uniCore.model.changeModelPos(carModel, resAxis, [uniCore.animation.caluRealTimeRotate(axis, index) + 90, 0, 0]);
 ```
 
 比如反转方向：
 
 ```js
-uniCore.model.changeModelPos(cityModel, resAxis, [-uniCore.animation.caluRealTimeRotate(axis, index), 0, 0]);
+uniCore.model.changeModelPos(carModel, resAxis, [-uniCore.animation.caluRealTimeRotate(axis, index), 0, 0]);
 ```
 
 ### 标签跟随事件
@@ -230,15 +230,15 @@ export default {
         name: null,
         url: '../../../assets/gltf/CesiumMilkTruck.glb',
         property: null
-      }).then(cityModel => {
+      }).then(carModel => {
         let axis = [[113.12022464274082, 28.25619028746274], [113.12161934465712, 28.256137318482835], [113.12091905012934, 28.256699622636106], [113.1209893840498, 28.25591814354084]];
         uniCore.animation.updatePosition(axis, (resAxis, index) => {
           // 根据实时坐标修改路径和偏转角
-          uniCore.model.changeModelPos(cityModel, resAxis, [uniCore.animation.caluRealTimeRotate(axis, index), 0, 0]);
+          uniCore.model.changeModelPos(carModel, resAxis, [uniCore.animation.caluRealTimeRotate(axis, index), 0, 0]);
 
           // 图片标签跟随
           picTip.position._value = uniCore.position.axis2cartesian3([resAxis[0], resAxis[1], resAxis[2] + 8])
-        }, () => { console.log("finish!") }, 5, 0.01, [cityModel, picTip])
+        }, () => { console.log("finish!") }, 5, 0.01, [carModel, picTip])
       })
 
 
@@ -290,5 +290,5 @@ picTip.position._value = uniCore.position.axis2cartesian3([resAxis[0], resAxis[1
 记得在 exclude 处加入图片标签的 entity ，防止小车左脚踩右脚跟着标签一起升天。
 
 ```js
-[cityModel, picTip]
+[carModel, picTip]
 ```

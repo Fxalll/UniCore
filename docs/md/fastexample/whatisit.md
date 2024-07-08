@@ -36,6 +36,10 @@ GIS/BIM 切换：
 
 ![Alt text](image-40.png)
 
+小车动画 & 图片标签跟随：
+
+![Alt text](image-48.png)
+
 ### 默认示例代码
 
 ```vue

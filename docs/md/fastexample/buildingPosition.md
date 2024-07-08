@@ -29,6 +29,10 @@ UniCore 内置 Position 类，提供 buildingPosition 方法用于定位到某�
 
 不妨通过代码示例在 Vue 中尝试一下：
 
+### 在线尝试
+
+可以直接在 [StackBlitz](https://stackblitz.com/edit/vitejs-vite-4a4avh?file=src%2Fviews%2FHomeView.vue&startScript=serve) 上进行在线尝试。
+
 ### 代码示例
 
 ```vue
