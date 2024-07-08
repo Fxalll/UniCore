@@ -31,7 +31,7 @@ UniCore 内置 Position 类，提供 buildingPosition 方法用于定位到某�
 
 ### 在线尝试
 
-可以直接在 [StackBlitz](https://stackblitz.com/edit/vitejs-vite-4a4avh?file=src%2Fviews%2FHomeView.vue&startScript=serve) 上进行在线尝试。
+可以使用章节 [快速开始(在线尝试)](../faststart.md#在线尝试) 中的链接，将下文的 `代码示例` 覆盖原代码进行在线尝试。
 
 ### 代码示例
 

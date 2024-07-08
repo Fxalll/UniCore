@@ -4,11 +4,15 @@ outline: deep
 
 # 快速开始
 
+## 在线尝试
+
+你可以直接在 [StackBlitz](https://stackblitz.com/edit/vitejs-vite-4a4avh?file=src%2Fviews%2FHomeView.vue&startScript=serve) 上进行在线尝试。由于 StackBlitz 的限制，模型文件无法上传至在线示例。如需体验涉及到模型文件的示例，可参考 [快速上手](./fastexample/whatisit.md) 进行项目的快速搭建。
+
 ## 安装
 
 ### 前置准备
 
-UniCore 可以单独使用（可参考 [快速上手](./fastexample/whatisit.md) 进行项目的快速搭建），也可以安装到现有项目中。在这两种情况下，都可以使用以下方式安装它：
+UniCore 可以单独使用，也可以安装到现有项目中。在这两种情况下，都可以使用以下方式安装它：
 
 ```sh
 npm install unicore-sdk
