@@ -42,6 +42,16 @@ export default defineConfig({
         ]
       },
       {
+        text: '案例中心',
+        items: [
+          { text: '住宅项目', link: '/md/fastproject/buildingProject' },
+          { text: '城市管网项目', link: '/md/fastproject/pipeProject' },
+        ]
+      },
+      // {
+      //   text: '在线示例项目', link: '/docs/md/fastproject/index'
+      // },
+      {
         text: '1.3.8', items: [
           { text: '版本更新', link: 'http://192.168.0.6:3000/cxyjy_zhjz/npm-unicore-sdk/commits/branch/main' }
         ]

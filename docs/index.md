@@ -19,10 +19,13 @@ features:
   - title: 通用性
     details: 支持BIM与GIS融合应用：不仅能支持建筑信息模型（BIM）的加载、交互和展示，还能与地理信息系统（GIS）进行深度融合。
     icon: 🛠️
+    link: '/md/whyit'
   - title: 可视化
     details: 直观展示复杂数据模型：直观的可视化方式有助于用户更好地把握项目的整体情况和细节。
     icon: 🌟
+    link: '/md/whyit'
   - title: 协同&共享
     details: 高效沟通，数据实时共享：使得不同部门或团队之间可以方便地共享和交换数据，让协同更高效。
     icon: 💬
+    link: '/md/whyit'
 ---
