@@ -28,6 +28,10 @@ UniCore 内置 Interact 类，提供 setTilesRightClickMenu 方法用于开启3D
 
 不妨通过代码示例在 Vue 中尝试一下（相关模型文件在本章 [阅前提醒](./whatisit.md) 中的内网Git链接中可获取）：
 
+### 在线演示
+
+点击 [在线链接](http://192.168.4.56:8091/?id=setTilesRightClickMenu) 以查看在线演示。
+
 ### 代码示例
 
 ```vue

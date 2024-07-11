@@ -27,6 +27,10 @@ UniCore 内置 Model 类，提供 undergroundMode 方法用于开启地下模式
 
 可以使用章节 [快速开始(在线尝试)](../faststart.md#在线尝试) 中的链接，将下文的 `代码示例` 覆盖原代码进行在线尝试。
 
+### 在线演示
+
+点击 [在线链接](http://192.168.4.56:8091/?id=undergroundMode) 以查看在线演示。
+
 ### 代码示例
 
 ```vue
@@ -38,7 +42,6 @@ UniCore 内置 Model 类，提供 undergroundMode 方法用于开启地下模式
 import { UniCore } from 'unicore-sdk'
 import { config } from 'unicore-sdk/unicore.config'
 import 'unicore-sdk/Widgets/widgets.css'
-import * as Cesium from 'cesium'
 
 export default {
   // 生命周期 - 挂载完成（可以访问DOM元素）

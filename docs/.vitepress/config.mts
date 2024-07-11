@@ -44,8 +44,26 @@ export default defineConfig({
       {
         text: '案例中心',
         items: [
-          { text: '住宅项目', link: '/md/fastproject/buildingProject' },
-          { text: '城市管网项目', link: '/md/fastproject/pipeProject' },
+          {
+            text: '文档案例',
+            items: [
+              { text: '视角与模型定位', link: '/md/fastproject/positionExample' },
+              { text: '模型加载', link: '/md/fastproject/modelAddExample' },
+              { text: '模型操作', link: '/md/fastproject/modelChangeExample' },
+              { text: '模型动画', link: '/md/fastproject/modelAnimationExample' },
+              { text: '场景操作', link: '/md/fastproject/sceneOperationExample' },
+              { text: '本地组件', link: '/md/fastproject/localComponentsExample' },
+              { text: '其他方法', link: '/md/fastproject/otherMethodExample' },
+            ]
+          },
+          {
+            text: '项目案例',
+            items: [
+              { text: '住宅项目', link: '/md/fastproject/buildingProject' },
+              { text: '城市管网项目', link: '/md/fastproject/pipeProject' },
+            ]
+          },
+
         ]
       },
       // {

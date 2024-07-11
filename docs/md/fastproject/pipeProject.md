@@ -14,10 +14,4 @@ features:
     icon: {src: './image-1.png', width: '4000px'}
     link: 'http://bim.3hmis.com:9007'
     linkText: '点击查看在线示例'
-  - title: xxx
-    details: xxx支持BIM与GIS融合应用：不仅能支持建筑信息模型（BIM）的加载、交互和展示，还能与地理信息系统（GIS）进行深度融合。
-    icon: {src: './image-1.png', width: '4000px'}
-    link: 'http://bim.3hmis.com:9007'
-    linkText: '点击查看在线示例'
-
 ---

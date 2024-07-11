@@ -20,6 +20,10 @@ npm install vue-giant-tree@1.0.0
 
 不妨通过代码示例在 Vue 中尝试一下：
 
+### 在线演示
+
+点击 [在线链接](http://192.168.4.56:8091/?id=LayerControlSet) 以查看在线演示。
+
 ### 组件代码示例
 
 默认路径为 `components/LayerControlSet/index.vue`

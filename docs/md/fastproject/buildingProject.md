@@ -9,31 +9,10 @@ hero:
   image: { src: ""}
 
 features:
-  - title: xxxxxx智慧工地示例项目
-    details: xxxxx智慧工地不仅能支持建筑信息模型（BIM）的加载、交互和展示，还能与地理信息系统（GIS）进行深度融合。
+  - title: 某地智慧工地综合示范项目
+    details: 某地智慧工地综合示范项目不仅能支持建筑信息模型（BIM）的加载、交互和展示，还能与地理信息系统（GIS）进行深度融合。
     icon: {src: './image.png', width: '4000px'}
     link: 'http://192.168.4.46:8081/'
     linkText: '点击查看在线示例'
-  - title: xxx
-    details: xxx支持BIM与GIS融合应用：不仅能支持建筑信息模型（BIM）的加载、交互和展示，还能与地理信息系统（GIS）进行深度融合。
-    icon: {src: './image.png', width: '4000px'}
-    link: 'http://192.168.4.46:8081/'
-    linkText: '点击查看在线示例'
-  - title: xxx
-    details: xxx支持BIM与GIS融合应用：不仅能支持建筑信息模型（BIM）的加载、交互和展示，还能与地理信息系统（GIS）进行深度融合。
-    icon: {src: './image.png', width: '4000px'}
-    link: 'http://192.168.4.46:8081/'
-    linkText: '点击查看在线示例'
-  - title: xxx
-    details: xxx支持BIM与GIS融合应用：不仅能支持建筑信息模型（BIM）的加载、交互和展示，还能与地理信息系统（GIS）进行深度融合。
-    icon: {src: './image.png', width: '4000px'}
-    link: 'http://192.168.4.46:8081/'
-    linkText: '点击查看在线示例'
-  - title: xxx
-    details: xxx支持BIM与GIS融合应用：不仅能支持建筑信息模型（BIM）的加载、交互和展示，还能与地理信息系统（GIS）进行深度融合。
-    icon: {src: './image.png', width: '4000px'}
-    link: 'http://192.168.4.46:8081/'
-    linkText: '点击查看在线示例'
-
 
 ---

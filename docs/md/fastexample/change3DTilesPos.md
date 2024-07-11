@@ -26,6 +26,10 @@ UniCore 内置 Model 类，提供 change3DTilesPos 方法用于修改 3DTiles �
 
 不妨通过代码示例在 Vue 中尝试一下（相关模型文件在本章 [阅前提醒](./whatisit.md) 中的内网Git链接中可获取）：
 
+### 在线演示
+
+点击 [在线链接](http://192.168.4.56:8091/?id=change3DTilesPos) 以查看在线演示。
+
 ### 代码示例
 
 ```vue
@@ -69,6 +73,8 @@ export default {
       //加载3dtiles
       uniCore.model.createTileset('../../../assets/3Dtiles/changshaCityModel/tileset.json', options).then(cityLeft => {
         uniCore.model.change3DTilesPos(cityLeft, [113.12098820449636, 28.256150218457687, 50])
+
+        uniCore.viewer.flyTo(cityLeft)
       })
     }
 

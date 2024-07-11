@@ -33,6 +33,10 @@ UniCore 内置 Position 类，提供 buildingPosition 方法用于定位到某�
 
 可以使用章节 [快速开始(在线尝试)](../faststart.md#在线尝试) 中的链接，将下文的 `代码示例` 覆盖原代码进行在线尝试。
 
+### 在线演示
+
+点击 [在线链接](http://192.168.4.56:8091/?id=BuildingPosition) 以查看在线演示。
+
 ### 代码示例
 
 ```vue

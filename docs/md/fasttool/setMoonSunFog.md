@@ -24,6 +24,10 @@ uniCore.viewer.scene.skyBox.show = false;
 
 你可使用更详尽的设置面板进行调整，在参数后的括号内代表该参数的 API 方法。
 
+### 在线演示
+
+点击 [在线链接](http://192.168.4.56:8091/?id=setMoonSunFog) 以查看在线演示。
+
 其中的 `scene` 、 `globe` 、 `skyAtmosphere` 可使用如下方法获取。
 
 ```js

@@ -2,7 +2,7 @@
 outline: deep
 ---
 
-# 创建一个标签
+# 根据坐标创建一个标签
 
 ## Tip 类的方法 - createTip
 
