@@ -7,11 +7,22 @@ hero:
   text: "本地组件"
   tagline: 使用 UniCore 打造的应用示例
   image: { src: ""}
+  actions:
+  - theme: brand
+    text: ↓ 其他方法
+    link: md/fastproject/otherMethodExample
+  - theme: alt
+    text: ↑ 场景操作
+    link: md/fastproject/sceneOperationExample
 
 features:
   - title: 图层管理树组件
     icon: {src: './image-25.png', width: '4000px'}
     link: 'http://192.168.4.56:8091/?id=LayerControlSet'
+    linkText: '点击查看在线示例'
+  - title: 模型剖切组件
+    icon: {src: './image-38.png', width: '4000px'}
+    link: 'http://192.168.4.56:8091/?id=ModelCutSet'
     linkText: '点击查看在线示例'
   - title: BIM 场景视图盒子组件
     icon: {src: './image-26.png', width: '4000px'}

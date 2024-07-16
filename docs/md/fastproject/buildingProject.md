@@ -7,6 +7,13 @@ hero:
   text: "住宅项目"
   tagline: 使用 UniCore 打造的项目级住宅项目应用示例
   image: { src: ""}
+  actions:
+  - theme: brand
+    text: ↓ 城市管网项目
+    link: md/fastproject/pipeProject
+  - theme: alt
+    text: ↑ 其他方法
+    link: md/fastproject/otherMethodExample
 
 features:
   - title: 某地智慧工地综合示范项目

@@ -290,7 +290,7 @@ UniModels类
 
 <br>
 
-#### digModel(model, dimensions, size)
+#### digModel(model, options = { "fb": null, "bf": null, "lr": null, "rl": null, "tb": null, "bt": null }, edgeWidth = 0.0)
 
 模型按方块剖切
 
@@ -299,8 +299,8 @@ UniModels类
 | Name | Type | Default | Description |
 | --- | --- | --- | --- |
 | `model` | \* |  | 使用添加模型方法后返回的模型tileset类 |
-| `dimensions` | \* |  | 剖切方向 |
-| `size` | \* | 0 | 尺寸 |
+| `options` | \* |  | 剖切方向及设置 |
+| `edgeWidth` | \* | 0 | 剖切边缘宽度 |
 
 <br><hr>
 

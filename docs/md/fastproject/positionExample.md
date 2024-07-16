@@ -7,6 +7,10 @@ hero:
   text: "视角与模型定位"
   tagline: 使用 UniCore 打造的应用示例
   image: { src: ""}
+  actions:
+  - theme: brand
+    text: ↓ 模型加载
+    link: md/fastproject/modelAddExample
 
 features:
   - title: 定位到某个经纬度坐标

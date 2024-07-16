@@ -7,6 +7,13 @@ hero:
   text: "模型动画"
   tagline: 使用 UniCore 打造的应用示例
   image: { src: ""}
+  actions:
+  - theme: brand
+    text: ↓ 场景操作
+    link: md/fastproject/sceneOperationExample
+  - theme: alt
+    text: ↑ 模型操作
+    link: md/fastproject/modelChangeExample
 
 features:
   - title: 模型贴地移动

@@ -176,16 +176,3 @@ cityModel.readyEvent.addEventListener(() => {
 ```js
 uniCore.model.digModel(cityModel)
 ```
-
-相关方法的JSDoc如下：
-
-```js
-/**
- * 模型按方块剖切
- * @param {*} model 使用添加模型方法后返回的模型tileset类
- * @param {*} dimensions 剖切方向
- * @param {*} size 尺寸
- */
-```
-
-其中 dimensions 变量默认值为 [0, 0, 0]，size 默认值为 0。不修改默认值使用该方法即可还原模型剖切前的样子。

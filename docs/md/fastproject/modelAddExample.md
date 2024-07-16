@@ -7,6 +7,13 @@ hero:
   text: "模型加载"
   tagline: 使用 UniCore 打造的应用示例
   image: { src: ""}
+  actions:
+  - theme: brand
+    text: ↓ 模型操作
+    link: md/fastproject/modelChangeExample
+  - theme: alt
+    text: ↑ 视角与模型定位
+    link: md/fastproject/positionExample
 
 features:
   - title: 根据 URL 加载 3DTiles 模型

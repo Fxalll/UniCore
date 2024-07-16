@@ -7,6 +7,13 @@ hero:
   text: "其他方法"
   tagline: 使用 UniCore 打造的应用示例
   image: { src: ""}
+  actions:
+  - theme: brand
+    text: ↓ 住宅项目
+    link: md/fastproject/buildingProject
+  - theme: alt
+    text: ↑ 本地组件
+    link: md/fastproject/localComponentsExample
 
 features:
   - title: 飞行定位到模型

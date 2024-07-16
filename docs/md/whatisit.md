@@ -4,6 +4,8 @@
 
 通用图形引擎是一个基于Web端开发的图形引擎，`专为GIS应用与BIM应用而设计`。
 
+![Static Badge](https://img.shields.io/npm/v/unicore-sdk?style=flat&logo=npm&label=版本号)
+
 ### 创新点
 
 不同于市面上的BIM图形引擎与GIS图形引擎，通用图形引擎致力于将BIM场景与GIS场景结合，不仅能支持建筑信息模型（BIM）的加载、交互和展示，还能与地理信息系统（GIS）进行深度融合。

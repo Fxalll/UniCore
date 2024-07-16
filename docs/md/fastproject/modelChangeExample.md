@@ -7,8 +7,19 @@ hero:
   text: "模型操作"
   tagline: 使用 UniCore 打造的应用示例
   image: { src: ""}
+  actions:
+  - theme: brand
+    text: ↓ 模型动画
+    link: md/fastproject/modelAnimationExample
+  - theme: alt
+    text: ↑ 模型加载
+    link: md/fastproject/modelAddExample
 
 features:
+  - title: 模型剖切
+    icon: {src: './image-39.png', width: '4000px'}
+    link: 'http://192.168.4.56:8091/?id=digModel'
+    linkText: '点击查看在线示例'
   - title: 模型剪切
     icon: {src: './image-9.png', width: '4000px'}
     link: 'http://192.168.4.56:8091/?id=cutModel'

@@ -7,6 +7,13 @@ hero:
   text: "场景操作"
   tagline: 使用 UniCore 打造的应用示例
   image: { src: ""}
+  actions:
+  - theme: brand
+    text: ↓ 本地组件
+    link: md/fastproject/localComponentsExample
+  - theme: alt
+    text: ↑ 模型动画
+    link: md/fastproject/modelAnimationExample
 
 features:
   - title: 开启地下模式
