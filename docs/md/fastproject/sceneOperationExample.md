@@ -12,13 +12,17 @@ hero:
     text: ↓ 本地组件
     link: md/fastproject/localComponentsExample
   - theme: alt
-    text: ↑ 模型动画
+    text: ↑ 动画与粒子效果
     link: md/fastproject/modelAnimationExample
 
 features:
-  - title: 开启地下模式
-    icon: {src: './image-14.png', width: '4000px'}
-    link: 'http://192.168.4.56:8091/?id=undergroundMode'
+  - title: 第一人称自由漫游
+    icon: {src: './image-40.png', width: '4000px'}
+    link: 'http://192.168.4.56:8091/?id=startTour'
+    linkText: '点击查看在线示例'
+  - title: 按给定路径漫游
+    icon: {src: './image-41.png', width: '4000px'}
+    link: 'http://192.168.4.56:8091/?id=startTweensTour'
     linkText: '点击查看在线示例'
   - title: 开启阴影遮挡
     icon: {src: './image-15.png', width: '4000px'}
@@ -43,6 +47,10 @@ features:
   - title: 绘制多段线条
     icon: {src: './image-20.png', width: '4000px'}
     link: 'http://192.168.4.56:8091/?id=paintLine'
+    linkText: '点击查看在线示例'
+  - title: 开启地下模式
+    icon: {src: './image-14.png', width: '4000px'}
+    link: 'http://192.168.4.56:8091/?id=undergroundMode'
     linkText: '点击查看在线示例'
   - title: 绘制墙体
     icon: {src: './image-21.png', width: '4000px'}

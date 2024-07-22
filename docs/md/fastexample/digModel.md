@@ -2,7 +2,7 @@
 outline: deep
 ---
 
-# 模型剪切
+# 模型剖切
 
 ## Model 类的方法 - digModel
 

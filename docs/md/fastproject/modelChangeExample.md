@@ -9,7 +9,7 @@ hero:
   image: { src: ""}
   actions:
   - theme: brand
-    text: ↓ 模型动画
+    text: ↓ 动画与粒子效果
     link: md/fastproject/modelAnimationExample
   - theme: alt
     text: ↑ 模型加载

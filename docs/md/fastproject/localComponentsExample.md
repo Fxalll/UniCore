@@ -28,6 +28,10 @@ features:
     icon: {src: './image-26.png', width: '4000px'}
     link: 'http://192.168.4.56:8091/?id=BimCubeSet'
     linkText: '点击查看在线示例'
+  - title: 路径漫游控制组件
+    icon: {src: './image-42.png', width: '4000px'}
+    link: 'http://192.168.4.56:8091/?id=CreateTourSet'
+    linkText: '点击查看在线示例'
   - title: GIS / BIM 切换组件
     icon: {src: './image-27.png', width: '4000px'}
     link: 'http://192.168.4.56:8091/?id=GisBimSwitch'

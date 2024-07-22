@@ -36,7 +36,10 @@ export default defineConfig({
           { text: 'Tip', link: '/md/fastapi/Tip' },
           { text: 'Interact', link: '/md/fastapi/Interact' },
           { text: 'Database', link: '/md/fastapi/Database' },
+          { text: 'Animation', link: '/md/fastapi/Animation' },
+          { text: 'Particle', link: '/md/fastapi/Particle' },
           { text: 'Flat', link: '/md/fastapi/Flat' },
+          { text: 'Tour', link: '/md/fastapi/Tour' },
           { text: 'TerrainClip', link: '/md/fastapi/TerrainClip' },
           { text: 'Service', link: '/md/fastapi/Service' },
         ]
@@ -50,7 +53,7 @@ export default defineConfig({
               { text: '视角与模型定位', link: '/md/fastproject/positionExample' },
               { text: '模型加载', link: '/md/fastproject/modelAddExample' },
               { text: '模型操作', link: '/md/fastproject/modelChangeExample' },
-              { text: '模型动画', link: '/md/fastproject/modelAnimationExample' },
+              { text: '动画与粒子效果', link: '/md/fastproject/modelAnimationExample' },
               { text: '场景操作', link: '/md/fastproject/sceneOperationExample' },
               { text: '本地组件', link: '/md/fastproject/localComponentsExample' },
               { text: '其他方法', link: '/md/fastproject/otherMethodExample' },
@@ -70,7 +73,7 @@ export default defineConfig({
       //   text: '在线示例项目', link: '/docs/md/fastproject/index'
       // },
       {
-        text: '1.4.0', items: [
+        text: '1.4.6', items: [
           { text: '版本更新', link: 'http://192.168.0.6:3000/cxyjy_zhjz/npm-unicore-sdk/commits/branch/main' }
         ]
       }
@@ -129,15 +132,21 @@ export default defineConfig({
             collapsed: false
           },
           {
-            text: '模型动画',
+            text: '动画与粒子效果',
             items: [
               { text: '模型贴地移动', link: '/md/fastexample/updatePosition' },
+              { text: '类雪花粒子效果', link: '/md/fastexample/createSnow' },
+              { text: '类火焰粒子效果', link: '/md/fastexample/createFire' },
+              { text: '类爆炸粒子效果', link: '/md/fastexample/createBoom' },
+              { text: '类烟雾粒子效果', link: '/md/fastexample/createSmoke' },
             ],
             collapsed: false
           },
           {
             text: '场景操作',
             items: [
+              { text: '第一人称自由漫游', link: '/md/fastexample/startTour' },
+              { text: '按给定路径漫游', link: '/md/fastexample/startTweensTour' },
               { text: '开启地下模式', link: '/md/fastexample/undergroundMode' },
               { text: '开启阴影遮挡', link: '/md/fastexample/shadowChange' },
               { text: '关闭深度检测', link: '/md/fastexample/depthTestAgainstTerrain' },
@@ -165,6 +174,7 @@ export default defineConfig({
               { text: '图层管理树组件', link: '/md/fastcomponents/LayerControlSet' },
               { text: '模型剖切组件', link: '/md/fastcomponents/ModelCutSet' },
               { text: 'BIM 场景视图盒子组件', link: '/md/fastcomponents/BimCubeSet' },
+              { text: '路径漫游控制组件', link: '/md/fastcomponents/CreateTourSet' },
               { text: 'GIS / BIM 切换组件', link: '/md/fastcomponents/GisBimSwitch' },
               { text: '模型信息树组件', link: '/md/fastcomponents/ModelTreeSet' },
               { text: '模型属性窗口组件', link: '/md/fastcomponents/modelPropertyInfo' },
@@ -231,7 +241,9 @@ export default defineConfig({
           { text: 'Interact', link: '/md/fastapi/Interact' },
           { text: 'Database', link: '/md/fastapi/Database' },
           { text: 'Animation', link: '/md/fastapi/Animation' },
+          { text: 'Particle', link: '/md/fastapi/Particle' },
           { text: 'Flat', link: '/md/fastapi/Flat' },
+          { text: 'Tour', link: '/md/fastapi/Tour' },
           { text: 'TerrainClip', link: '/md/fastapi/TerrainClip' },
           { text: 'Service', link: '/md/fastapi/Service' },
         ],

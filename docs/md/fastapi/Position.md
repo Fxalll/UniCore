@@ -116,6 +116,16 @@ cartographic 弧度转经纬度
 
 ##### Returns:
 
+#### getCurrentCameraSet()
+
+获取当前位置参数（经纬度、俯仰角）
+
+<br><hr>
+
+<br>
+
+##### Returns:
+
 #### lockTo(viewer, bool, axis, heading, pitch)
 
 锁定视角
