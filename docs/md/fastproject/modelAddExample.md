@@ -24,4 +24,8 @@ features:
     icon: {src: './image-8.png', width: '4000px'}
     link: 'http://192.168.4.56:8091/?id=addGltf'
     linkText: '点击查看在线示例'
+  - title: 纯 BIM 模式加载模型
+    icon: {src: './image-48.png', width: '4000px'}
+    link: 'http://192.168.4.56:8091/?id=initOnlyBimMode'
+    linkText: '点击查看在线示例'
 ---

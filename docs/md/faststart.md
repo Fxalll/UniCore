@@ -229,6 +229,7 @@ accessToken 可联系开发者获取 Token 获取方法，下面为测试 token 
   width: 100%;
   height: 100%;
   overflow: hidden;
+  background: black;
 }
 </style>
 ```
@@ -236,6 +237,10 @@ accessToken 可联系开发者获取 Token 获取方法，下面为测试 token 
 ### 温馨提示
 
 鉴于 Vue 的实现原理，`不建议将 viewer 放入 Vue 中的 store、data、computed 内`，会导致通用图形引擎的展示帧率严重下降。你可以直接使用 `uniCore.viewer` 或 `window.viewer` 的方式获取 viewer。 
+
+另外的，由于资源文件加载路径问题，在使用 Vue 的路由功能时，不建议使用 `history` 模式，建议使用 `hash` 模式。
+
+如果项目使用 `history` 模式，需要根据项目URL具体展示路径修改 vue.config.js 中的 `CESIUM_BASE_URL: JSON.stringify('./')`.
 
 ### 拓展
 

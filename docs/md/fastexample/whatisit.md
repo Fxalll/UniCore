@@ -273,6 +273,7 @@ export default {
   width: 100%;
   height: 100%;
   overflow: hidden;
+  background: black;
 }
 #test {
   position: absolute;

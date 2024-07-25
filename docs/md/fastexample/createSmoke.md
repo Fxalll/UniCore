@@ -31,6 +31,8 @@ let parameter = {
 }
 ```
 
+变量的JSDoc形式如下：
+
 ```js
 /**
  * 创建类烟雾粒子效果
@@ -138,6 +140,7 @@ export default {
   width: 100%;
   height: 100%;
   overflow: hidden;
+  background: black;
 }
 </style>
 

@@ -62,7 +62,7 @@ export default defineConfig({
           {
             text: '项目案例',
             items: [
-              { text: '住宅项目', link: '/md/fastproject/buildingProject' },
+              { text: '综合大场景案例', link: '/md/fastproject/buildingProject' },
               { text: '城市管网项目', link: '/md/fastproject/pipeProject' },
             ]
           },
@@ -73,7 +73,7 @@ export default defineConfig({
       //   text: '在线示例项目', link: '/docs/md/fastproject/index'
       // },
       {
-        text: '1.4.6', items: [
+        text: '1.4.8', items: [
           { text: '版本更新', link: 'http://192.168.0.6:3000/cxyjy_zhjz/npm-unicore-sdk/commits/branch/main' }
         ]
       }
@@ -117,6 +117,7 @@ export default defineConfig({
             items: [
               { text: '根据 URL 加载 3DTiles 模型', link: '/md/fastexample/createTileset' },
               { text: '根据 URL 加载 glTF 模型', link: '/md/fastexample/addGltf' },
+              { text: '纯 BIM 模式加载模型', link: '/md/fastexample/initOnlyBimMode' },
             ],
             collapsed: false
           },

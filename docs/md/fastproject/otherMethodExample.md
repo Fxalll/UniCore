@@ -9,7 +9,7 @@ hero:
   image: { src: ""}
   actions:
   - theme: brand
-    text: ↓ 住宅项目
+    text: ↓ 综合大场景案例
     link: md/fastproject/buildingProject
   - theme: alt
     text: ↑ 本地组件
