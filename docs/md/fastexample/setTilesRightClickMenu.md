@@ -2,13 +2,13 @@
 outline: deep
 ---
 
-# 模型右键菜单（含 GIS/BIM 场景切换）
+# 开启 3DTiles 模型交互事件
 
 ## Interact 类的方法 - setTilesRightClickMenu
 
 ### 方法介绍
 
-UniCore 内置 Interact 类，提供 setTilesRightClickMenu 方法用于开启3DTiles 模型开启交互事件，如右键菜单、点击高亮、属性property展示、GIS/BIM 场景切换。
+UniCore 内置 Interact 类，提供 setTilesRightClickMenu 方法用于开启 3DTiles 模型开启交互事件，如右键菜单、点击高亮、属性property展示、GIS/BIM 场景切换。
 
 建议同时使用组件 [BIM 场景视图盒子组件](../fastcomponents/BimCubeSet.md) 以更好地控制视角与摄像机。
 

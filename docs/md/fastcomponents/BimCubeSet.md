@@ -8,7 +8,7 @@ outline: deep
 
 通过 BIM 场景视图盒子组件，能够使用视图盒子进行当前视角的可视化显示与切换、正交/透视摄像机的切换功能。
 
-本文推荐结合右键菜单 [模型右键菜单（含 GIS/BIM 场景切换）](../fastexample/setTilesRightClickMenu.md) 进行 BIM 场景切换时显示本文要介绍的 BIM 场景视图盒子组件。
+本文推荐结合右键菜单 [开启 3DTiles 模型交互事件](../fastexample/setTilesRightClickMenu.md) 进行 BIM 场景切换时显示本文要介绍的 BIM 场景视图盒子组件。
 
 不妨通过代码示例在 Vue 中尝试一下：
 

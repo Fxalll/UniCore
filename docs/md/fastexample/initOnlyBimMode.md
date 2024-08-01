@@ -138,6 +138,9 @@ uniCore.initOnlyBimMode("unicoreContainer", async () => {
     <!-- BIM视图盒子组件开始 -->
     <bcSet ref="bcSetId"></bcSet>
     <!-- BIM视图盒子组件结束 -->
+    <!-- 属性窗口组件窗口卡片开始 -->
+    <mpInfo ref="mpInfoId"></mpInfo>
+    <!-- 属性窗口组件窗口卡片结束 -->
   </div>
 </template>
 
@@ -147,10 +150,11 @@ import { config } from 'unicore-sdk/unicore.config'
 import 'unicore-sdk/Widgets/widgets.css'
 
 import bcSet from '@/components/BimCubeSet/index.vue'; //BIM视图盒子组件
+import mpInfo from '@/components/modelPropertyInfo/index'; //属性窗口组件
 
 export default {
   components: {
-    bcSet
+    bcSet, mpInfo
   },
   // 生命周期 - 挂载完成（可以访问DOM元素）
   mounted () {
@@ -173,9 +177,9 @@ export default {
           lat: 0,
           height: 0
         }, {
-          id: "城市白膜",
+          id: "小别墅",
           name: null,
-          url: '../../../assets/gltf/长沙项目项目周边模型.glb',
+          url: '../../../assets/gltf/小别墅.glb',
           scale: 6.8,
           property: null
         }).then(cityModel => {
@@ -184,6 +188,10 @@ export default {
           })
           return cityModel;
         })
+
+        // 开启右键交互
+        uniCore.interact.setGltfRightClickMenu((property) => this.$refs.mpInfoId.showProps(property));
+
         return tileset;
 
       })
@@ -210,8 +218,6 @@ export default {
 #### 说明
 
 与添加 3DTiles 模型不同，在添加 glTF 模型时，你需要使用 readyEvent 监听事件以防止模型未加载完毕。
-
-glTF 模型暂时不支持点击高亮、右键菜单、属性查看等交互功能，后续通用图形引擎将完善 glTF 模型的交互系统。
 
 ### 拓展
 

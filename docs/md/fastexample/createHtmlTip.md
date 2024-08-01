@@ -12,7 +12,7 @@ UniCore 内置 Tip 类，提供 createHtmlTip 方法用于将 HTML 元素作为�
 
 `注：HTML 元素需使用 id 值。`
 <!-- 
-值得注意的是，如果你需要使用 GIS/BIM 场景切换功能，在右键菜单切换到 BIM 场景时无法自动隐藏此类标签。因为通用图形引擎无法确认哪一种 HTML 元素需要隐藏。为了避免隐藏到页面必要的 UI 组件，在使用右键菜单切换到 GIS/BIM 场景时利用回调函数使用 Javascript 原生方法隐藏需要隐藏的 HTML 元素。见 [模型右键菜单（含 GIS/BIM 场景切换） - 关键代码](./setTilesRightClickMenu.md#关键代码) 。 -->
+值得注意的是，如果你需要使用 GIS/BIM 场景切换功能，在右键菜单切换到 BIM 场景时无法自动隐藏此类标签。因为通用图形引擎无法确认哪一种 HTML 元素需要隐藏。为了避免隐藏到页面必要的 UI 组件，在使用右键菜单切换到 GIS/BIM 场景时利用回调函数使用 Javascript 原生方法隐藏需要隐藏的 HTML 元素。见 [开启 3DTiles 模型交互事件 - 关键代码](./setTilesRightClickMenu.md#关键代码) 。 -->
 
 
 该方法需传入两个变量，即id值、标签坐标。参见JSDoc形式如下：

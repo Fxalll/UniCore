@@ -73,7 +73,7 @@ export default defineConfig({
       //   text: '在线示例项目', link: '/docs/md/fastproject/index'
       // },
       {
-        text: '1.4.8', items: [
+        text: '1.5.1', items: [
           { text: '版本更新', link: 'http://192.168.0.6:3000/cxyjy_zhjz/npm-unicore-sdk/commits/branch/main' }
         ]
       }
@@ -126,7 +126,8 @@ export default defineConfig({
             items: [
               { text: '模型剖切', link: '/md/fastexample/digModel' },
               { text: '模型剪切', link: '/md/fastexample/cutModel' },
-              { text: '模型右键菜单（含 GIS/BIM 场景切换）', link: '/md/fastexample/setTilesRightClickMenu' },
+              { text: '开启 3DTiles 模型交互事件', link: '/md/fastexample/setTilesRightClickMenu' },
+              { text: '开启 glTF 模型交互事件', link: '/md/fastexample/setGltfRightClickMenu' },
               { text: '模型压平', link: '/md/fastexample/flat' },
               { text: '模型显隐功能', link: '/md/fastexample/setPrimitivesShow' },
             ],
@@ -146,7 +147,8 @@ export default defineConfig({
           {
             text: '场景操作',
             items: [
-              { text: '第一人称自由漫游', link: '/md/fastexample/startTour' },
+              { text: '第一人称自由飞行漫游', link: '/md/fastexample/startTour' },
+              { text: '第一人称自由贴地漫游', link: '/md/fastexample/startOnGround' },
               { text: '按给定路径漫游', link: '/md/fastexample/startTweensTour' },
               { text: '开启地下模式', link: '/md/fastexample/undergroundMode' },
               { text: '开启阴影遮挡', link: '/md/fastexample/shadowChange' },

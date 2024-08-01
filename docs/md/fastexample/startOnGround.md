@@ -2,21 +2,21 @@
 outline: deep
 ---
 
-# 第一人称自由飞行漫游
+# 第一人称自由贴地漫游
 
-## Tour 类的方法 - start
+## Tour 类的方法 - startOnGround
 
 ### 方法介绍
 
-UniCore 内置 Tour 类，提供 start 方法用于开启第一人称自由飞行漫游功能。
+UniCore 内置 Tour 类，提供 startOnGround 方法用于开启第一人称自由贴地漫游功能。
 
 该方法需传入参数，参数格式示例如下：
 
 ```js
 // 定义漫游参数对象
-let aircrafRoamParam = {
+let carRoamParam = {
   // 模型路径
-  modelPath: "../../../../assets/gltf/Cesium_Air.glb",
+  modelPath: "../../../../assets/gltf/CesiumMilkTruck.glb",
   // 模型是否显示
   modelShow: true,
   // 模型缩放比例
@@ -24,7 +24,7 @@ let aircrafRoamParam = {
   // 起始位置
   startPosition: [113.12248820449636, 28.254150218457687, 500],
   // 初始漫游速度
-  speed: 50,
+  speed: 10,
 };
 ```
 
@@ -40,7 +40,8 @@ let aircrafRoamParam = {
  * @param {Array} parameter.modelScale -模型大小
  * @param {Array} parameter.modelShow -模型是否显示
  * @param {Number} [parameter.speed] -漫游速度，默认为1
- * @return {Cesium.Primitive} -返回飞行对象实体
+ * @param {*} exclude - 排除需要贴地的模型数组，防止贴着数组内的模型上方
+ * @return {Cesium.Primitive} -返回驾驶对象实体
  */
 ```
 
@@ -48,7 +49,7 @@ let aircrafRoamParam = {
 
 ### 在线演示
 
-点击 [在线链接](http://192.168.4.56:8091/?id=startTour) 以查看在线演示。
+点击 [在线链接](http://192.168.4.56:8091/?id=startOnGround) 以查看在线演示。
 
 ### 代码示例
 
@@ -58,9 +59,10 @@ let aircrafRoamParam = {
 </template>
 
 <script>
-import { UniCore } from 'unicore-sdk'
-import { config } from 'unicore-sdk/unicore.config'
-import 'unicore-sdk/Widgets/widgets.css'
+import { UniCore } from "../../public/static/application/UniCore"
+import { config } from '../../public/unicore.config'
+import 'cesium/Source/Widgets/widgets.css'
+
 
 export default {
   // 生命周期 - 挂载完成（可以访问DOM元素）
@@ -84,10 +86,14 @@ export default {
       let uniCore = new UniCore(config, accessToken);
       uniCore.init("unicoreContainer");
 
+      // 视角初始化
+      uniCore.position.buildingPosition(uniCore.viewer, [113.12380548015745, 28.250758831850005, 700], -20, -45, 1);
+
+
       // 定义漫游参数对象
-      let aircrafRoamParam = {
+      let carRoamParam = {
         // 模型路径
-        modelPath: "../../../../assets/gltf/Cesium_Air.glb",
+        modelPath: "../../../../assets/gltf/CesiumMilkTruck.glb",
         // 模型是否显示
         modelShow: true,
         // 模型缩放比例
@@ -95,13 +101,14 @@ export default {
         // 起始位置
         startPosition: [113.12248820449636, 28.254150218457687, 500],
         // 初始漫游速度
-        speed: 50,
+        speed: 0,
       };
 
-      // 执行开始飞行方法
-      uniCore.tour.start(aircrafRoamParam);
-      // 更改飞行视角方法（或按4键），value为'first'为第一视角，'none'为取消视角跟随
+      // 执行开始驾驶方法
+      uniCore.tour.startOnGround(carRoamParam);
+      // 更改驾驶视角方法（或按4键），value为'first'为第一视角，'none'为取消视角跟随
       uniCore.tour.changeView('first');
+
     }
 
   }
@@ -116,25 +123,24 @@ export default {
   width: 100%;
   height: 100%;
   overflow: hidden;
-  background: black;
+  background: #000;
 }
 </style>
-
 ```
 
 ### 示例运行结果
 
-![Alt text](image-50.png)
+![Alt text](image-60.png)
 
 ### 关键代码
 
-你可以通过修改 aircrafRoamParam 中的值查看修改这些变量带来的效果。
+你可以通过修改 carRoamParam 中的值查看修改这些变量带来的效果。
 
 ```js
 // 定义漫游参数对象
-let aircrafRoamParam = {
+let carRoamParam = {
   // 模型路径
-  modelPath: "../../../../assets/gltf/Cesium_Air.glb",
+  modelPath: "../../../../assets/gltf/CesiumMilkTruck.glb",
   // 模型是否显示
   modelShow: true,
   // 模型缩放比例
@@ -142,16 +148,22 @@ let aircrafRoamParam = {
   // 起始位置
   startPosition: [113.12248820449636, 28.254150218457687, 500],
   // 初始漫游速度
-  speed: 50,
+  speed: 0,
 };
 
-// 执行开始飞行方法
-uniCore.tour.start(aircrafRoamParam);
-// 更改飞行视角方法（或按4键），value为'first'为第一视角，'none'为取消视角跟随
+// 执行开始驾驶方法
+uniCore.tour.startOnGround(carRoamParam);
+// 更改驾驶视角方法（或按4键），value为'first'为第一视角，'none'为取消视角跟随
 uniCore.tour.changeView('first');
 ```
 
 ### 拓展
+
+startOnGround 内可以使用 exclude 排除需要贴地的模型数组，防止贴着数组内的模型上方。
+
+```js
+uniCore.tour.startOnGround(carRoamParam, [cityModel1, carModel2]);
+```
 
 使用 stop 方法可以停止漫游。
 

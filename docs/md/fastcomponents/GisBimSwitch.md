@@ -8,7 +8,7 @@ outline: deep
 
 通过 GIS / BIM 切换组件，能够在 GIS 功能与 BIM 功能之间自由切换。
 
-本文推荐使用右键菜单 [模型右键菜单（含 GIS/BIM 场景切换）](../fastexample/setTilesRightClickMenu.md) 进行 GIS / BIM 切换。
+本文推荐使用右键菜单 [开启 3DTiles 模型交互事件](../fastexample/setTilesRightClickMenu.md) 进行 GIS / BIM 切换。
 
 你可以使用组件 [BIM 场景视图盒子组件](../fastcomponents/BimCubeSet.md) 以更好地控制视角与摄像机。
 

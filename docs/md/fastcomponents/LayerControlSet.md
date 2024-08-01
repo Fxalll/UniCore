@@ -631,7 +631,6 @@ export default {
         this.isDowm = true
         var distanceX = event.clientX - this.selectElement.offsetLeft
         var distanceY = event.clientY - this.selectElement.offsetTop
-        console.log(div1);
         document.onmousemove = function (ev) {
           var oevent = ev || event
           div1.style.left = oevent.clientX - distanceX + 'px'

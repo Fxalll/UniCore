@@ -16,9 +16,13 @@ hero:
     link: md/fastproject/modelAnimationExample
 
 features:
-  - title: 第一人称自由漫游
+  - title: 第一人称自由飞行漫游
     icon: {src: './image-40.png', width: '4000px'}
     link: 'http://192.168.4.56:8091/?id=startTour'
+    linkText: '点击查看在线示例'
+  - title: 第一人称自由贴地漫游
+    icon: {src: './image-50.png', width: '4000px'}
+    link: 'http://192.168.4.56:8091/?id=startOnGround'
     linkText: '点击查看在线示例'
   - title: 按给定路径漫游
     icon: {src: './image-41.png', width: '4000px'}
