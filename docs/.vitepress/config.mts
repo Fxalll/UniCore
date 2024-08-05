@@ -179,6 +179,7 @@ export default defineConfig({
               { text: 'BIM 场景视图盒子组件', link: '/md/fastcomponents/BimCubeSet' },
               { text: '路径漫游控制组件', link: '/md/fastcomponents/CreateTourSet' },
               { text: 'GIS / BIM 切换组件', link: '/md/fastcomponents/GisBimSwitch' },
+              { text: '模型编辑组件', link: '/md/fastcomponents/AdjustModelSet' },
               { text: '模型信息树组件', link: '/md/fastcomponents/ModelTreeSet' },
               { text: '模型属性窗口组件', link: '/md/fastcomponents/modelPropertyInfo' },
               { text: '模型加载进度条组件', link: '/md/fastcomponents/loadModelInfo' },

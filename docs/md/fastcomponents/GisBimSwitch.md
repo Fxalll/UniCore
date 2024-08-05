@@ -39,7 +39,7 @@ outline: deep
       </div>
       <hr />
       <div class="button" @click="gbSwitch(false)">切换 GIS</div>
-      <div class="button" @click="gbSwitch()">切换 BIM</div>
+      <div class="button" @click="gbSwitch(true)">切换 BIM</div>
     </el-card>
   </div>
 </template>
@@ -50,40 +50,109 @@ import * as Cesium from 'cesium'
 export default {
 
   methods: {
-    init (modelId, lockAxiz) {
-      this.modelId = modelId;
-      this.lockAxiz = lockAxiz;
+    init (bimRecallFunc = null, gisRecallFunc = null) {
+      this.bimRecallFunc = bimRecallFunc;
+      this.gisRecallFunc = gisRecallFunc;
     },
+
     gbSwitch (bool = true) {
+
+      let that = this;
+
+      const handler = new Cesium.ScreenSpaceEventHandler(window.viewer.scene.canvas);
 
       // 开启地下模式
       uniCore.model.undergroundMode(bool);
 
       if (bool) {
-        uniCore.viewer.scene.backgroundColor = Cesium.Color.fromCssColorString("#b9d3ee");
-        uniCore.viewer.terrainProvider = null;
+        this.$message(
+          { message: "请点击所需切换到BIM场景的模型。" }
+        )
+        handler.setInputAction(function (e) {
+          const pickObj = viewer.scene.pick(e.position);
+          if (!!pickObj) {
+            const modelId = pickObj.id?.id === undefined ? pickObj.tileset.debugPickedTile.id : pickObj.id?.id;
+            const lockBoundingSphere = pickObj?.primitive.boundingSphere === undefined ? pickObj.tileset.boundingSphere : pickObj.primitive.boundingSphere;
+            const lockAxiz = uniCore.position.cartesian3_2axis(lockBoundingSphere.center);
 
-        // 只留该模型显示，其他全部隐藏
-        uniCore.model.setPrimitivesShow(this.modelId, false, false)
+            that.$message(
+              { message: `已点击到模型：${modelId}` }
+            )
 
-        // // 信息树只留该模型
-        // window.nodesList = window.nodesList?.filter(e =>
-        //   e.id === this.modelId
-        // )
+            // 触发回调函数
+            if (!!that.bimRecallFunc) {
+              that.bimRecallFunc(pickObj, lockBoundingSphere);
+            }
 
+            window.viewer.scene.backgroundColor = Cesium.Color.fromCssColorString("#b9d3ee");
+            window.viewer.terrainProvider = null;
+
+            // 只留该模型显示，其他全部隐藏
+            uniCore.model.setPrimitivesShow(modelId, false, false)
+
+            // 隐藏所有HTML标签
+            try {
+              window.htmlTipList && window.htmlTipList.forEach(e => {
+                document.getElementById(e).style.display = "none";
+              })
+            } catch (error) {
+
+            }
+
+            // 隐藏所有标签
+            // 记住先前的状态
+            window.tipBeforeSet = []
+            window.viewer.scene.primitives._primitives.forEach((e) => {
+              try {
+                for (let i of e._labels) {
+                  window.tipBeforeSet.push(i.show)
+                  i.show = false;
+                }
+              } catch (error) { }
+            })
+
+            // 打开视角锁定
+            uniCore.position.lockTo(window.viewer, bool, lockAxiz, -45, -30, pickObj.primitive.boundingSphere.radius * 3);
+
+            handler.removeInputAction(Cesium.ScreenSpaceEventType.LEFT_CLICK)//移除事件
+
+          }
+
+        }, Cesium.ScreenSpaceEventType.LEFT_CLICK);
       } else {
-        uniCore.viewer.scene.backgroundColor = null;
-        uniCore.viewer.terrainProvider = window.terrainProvider;
+        window.viewer.scene.backgroundColor = null;
+        window.viewer.terrainProvider = window.terrainProvider;
+
+        // 触发回调函数
+        if (!!that.gisRecallFunc) {
+          that.gisRecallFunc();
+        }
 
         // 还原所有模型显示
         uniCore.model.setPrimitivesShow('', true)
 
-        // // 信息树还原所有模型
-        // window.nodesList = window.nodesListSaved;
+        // 还原所有HTML标签
+        try {
+          window.htmlTipList && window.htmlTipList.forEach(e => {
+            document.getElementById(e).style.display = "block";
+          })
+        } catch (error) {
+
+        }
+
+        // 还原所有标签
+        window.viewer.scene.primitives._primitives.forEach((e) => {
+          try {
+            e._labels.forEach((ele, index) => {
+              ele.show = window.tipBeforeSet[index]
+            })
+          } catch (error) { }
+        })
+
+        // 关闭视角锁定
+        uniCore.position.lockTo(uniCore.viewer, bool, [0, 0]);
 
       }
-      // 打开视角锁定
-      uniCore.position.lockTo(uniCore.viewer, bool, this.lockAxiz);
 
     },
 
@@ -102,7 +171,6 @@ export default {
         this.isDowm = true
         var distanceX = event.clientX - this.selectElement.offsetLeft
         var distanceY = event.clientY - this.selectElement.offsetTop
-        
         document.onmousemove = function (ev) {
           var oevent = ev || event
           div1.style.left = oevent.clientX - distanceX + 'px'
@@ -147,7 +215,7 @@ export default {
   -webkit-backdrop-filter: blur(10px);
   backdrop-filter: blur(10px);
   transition: none;
-user-select: none;
+  user-select: none;
 
   .title {
     font-size: 18px;
@@ -190,6 +258,9 @@ user-select: none;
     <!-- GIS / BIM 切换组件窗口卡片开始 -->
     <gbSet ref="gbSetId"></gbSet>
     <!-- GIS / BIM 切换组件窗口卡片结束 -->
+    <!-- BIM视图盒子组件开始 -->
+    <bcSet ref="bcSetId"></bcSet>
+    <!-- BIM视图盒子组件结束 -->
   </div>
 </template>
 
@@ -198,19 +269,16 @@ import { UniCore } from 'unicore-sdk'
 import { config } from 'unicore-sdk/unicore.config'
 import 'unicore-sdk/Widgets/widgets.css'
 import gbSet from '@/components/GisBimSwitch/index'; //GIS/BIM切换组件
-
+import bcSet from '@/components/BimCubeSet/index.vue'; //BIM视图盒子组件
 
 export default {
 
   components: {
-    gbSet
+    gbSet, bcSet
   },
   // 生命周期 - 挂载完成（可以访问DOM元素）
   mounted () {
     this.init();
-
-    // 初始化GIS/BIM所需focus的模型
-    this.$refs.gbSetId.init('小别墅1号示例', [113.12098820449636, 28.256150218457687, 130]);
   },
 
   // 方法集合
@@ -234,6 +302,12 @@ export default {
       // 视角初始化
       uniCore.position.buildingPosition(viewer, [113.12380548015745, 28.250758831850005, 700], -20, -45, 1);
 
+      // 初始化视图盒子方法
+      this.$refs.gbSetId.init(
+        (pickObj, boundingSphere) => this.$refs.bcSetId.show(uniCore, uniCore.position.cartesian3_2axis(boundingSphere.center), boundingSphere.radius * 3),
+        () => this.$refs.bcSetId.hide()
+      );
+
       /**
        * 小别墅1号示例
        */
@@ -244,7 +318,7 @@ export default {
       }
       //加载3dtiles
       uniCore.model.createTileset(options.url, options).then(cityLeft => {
-        uniCore.model.changeModelPos(cityLeft, [113.12098820449636, 28.256150218457687, 130], [0, 0, 0], [23.8, 23.8, 23.8])
+        uniCore.model.changeModelPos(cityLeft, [113.12098820449636, 28.256150218457687, 130], [0, 0, 0])
 
         // 开启右键菜单、点击高亮、属性property
         uniCore.interact.setTilesRightClickMenu([{
@@ -259,14 +333,22 @@ export default {
       /**
          * 小别墅2号示例
          */
-      options = {
-        id: '小别墅2号示例',
-        url: '../../assets/3Dtiles/sample3_方法2_小别墅属性(1)/tileset.json'
-      }
-      //加载3dtiles
-      uniCore.model.createTileset(options.url, options).then(cityLeft => {
-        uniCore.model.changeModelPos(cityLeft, [113.12098820449636, 28.266150218457687, 130], [0, 0, 0], [23.8, 23.8, 23.8])
+      uniCore.model.addGltf({
+        lon: 0,
+        lat: 0,
+        height: 0
+      }, {
+        id: "小别墅2号示例",
+        name: null,
+        url: '../../../assets/gltf/小别墅.glb',
+        scale: 1.0,
+        property: null
+      }).then(cityModel => {
+        uniCore.model.changeModelPos(cityModel, [113.12098820449636, 28.257150218457687, 130], [90, 0, 0])
       })
+
+      // 开启glTF模型右键交互
+      uniCore.interact.setGltfRightClickMenu((property) => console.log(property));
     }
   }
 
@@ -290,16 +372,35 @@ export default {
 
 切换 GIS 模式效果（加载多源异构数据及GIS系统）：
 
-![Alt text](image-4.png)
+![Alt text](image-29.png)
 
 切换 BIM 模式效果（切换到单个模型的BIM系统）：
 
-![Alt text](image-2.png)
+`等待点击所需切换到 BIM 模式的模型（示例中分别为小别墅的 3DTiles 模型及 glTF模型）`
 
-![Alt text](image-3.png)
+![Alt text](image-30.png)
+
+`切换至对应 BIM 模式模型`
+
+![Alt text](image-31.png)
 
 ### 调用代码示例中的关键代码
 
+组件提供 init 方法，参数分别为切换 BIM 场景触发的回调函数及切换至 GIS 场景触发的回调函数。其中切换 BIM 场景触发的回调函数提供两个参数，分别是点击模型返回的tileset，及模型的包围盒数据。
+
 ```js
-this.$refs.gbSetId.init('小别墅1号示例', [113.12098820449636, 28.256150218457687, 130]);
+this.$refs.gbSetId.init(
+  bimRecallFunc,
+  gisRecallFunc
+);
+```
+
+示例中使用了 [BIM 场景视图盒子组件](./BimCubeSet.md) :
+
+```js
+// 初始化视图盒子方法
+this.$refs.gbSetId.init(
+  (pickObj, boundingSphere) => this.$refs.bcSetId.show(uniCore, uniCore.position.cartesian3_2axis(boundingSphere.center), boundingSphere.radius * 3),
+  () => this.$refs.bcSetId.hide()
+);
 ```

@@ -36,6 +36,10 @@ features:
     icon: {src: './image-27.png', width: '4000px'}
     link: 'http://192.168.4.56:8091/?id=GisBimSwitch'
     linkText: '点击查看在线示例'
+  - title: 模型编辑组件
+    icon: {src: './image-51.png', width: '4000px'}
+    link: 'http://192.168.4.56:8091/?id=AdjustModelSet'
+    linkText: '点击查看在线示例'
   - title: 模型信息树组件
     icon: {src: './image-28.png', width: '4000px'}
     link: 'http://192.168.4.56:8091/?id=ModelTreeSet'

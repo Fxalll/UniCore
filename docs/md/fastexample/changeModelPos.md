@@ -16,6 +16,8 @@ UniCore 内置 Model 类，提供 changeModelPos 方法用于修改模型位置�
 
 如果 changeModelPos 方法使用后仍找不到模型，你可以使用 UniCore 提供的另一种方法直接定位到模型上，见 [飞行定位到模型](../fasttool/zoomTo.md) 进行调试。如果是 3DTiles 模型，还可以使用下一节 [修改 3DTiles 模型位置](./change3DTilesPos.md) 进行尝试。 
 
+本文档推荐结合使用本地组件 [模型编辑组件](../fastcomponents/AdjustModelSet.md) 调试模型。
+
 变量的JSDoc形式如下：
 
 ```js
