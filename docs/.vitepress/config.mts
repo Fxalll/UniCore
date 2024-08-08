@@ -229,6 +229,7 @@ export default defineConfig({
               { text: '全局光照设置', link: '/md/fasttool/enableLighting' },
               { text: '分辨率设置', link: '/md/fasttool/resolutionScale' },
               { text: '天体、雾、大气、光照详细设置', link: '/md/fasttool/setMoonSunFog' },
+              { text: '新增 GIS 数据图层', link: '/md/fasttool/addGisData' },
               { text: '全屏展示', link: '/md/fasttool/fullScreen' },
               { text: '首屏加载动画', link: '/md/fasttool/loadingScreen' },
             ],
