@@ -186,6 +186,7 @@ export default {
           that.offsets1 = that.offsets2 = that.offsets3 = 0;
           that.hpr1 = that.hpr2 = that.hpr3 = 0;
 
+          // 设置数据
           that.setData();
 
           handler.removeInputAction(Cesium.ScreenSpaceEventType.LEFT_CLICK)//移除事件
