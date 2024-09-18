@@ -379,7 +379,6 @@ export default {
     * 通用图形引擎初始化
     */
     init () {
-
       // 初始化UniCore
 
       // 目前采用Cesium的地形&底图数据，这里配置Cesium的token
