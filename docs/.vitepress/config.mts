@@ -8,13 +8,13 @@ export default defineConfig({
     ["link", { rel: "icon", href: "/logo3.png" }],
   ],
   themeConfig: {
-    // lastUpdated: {
-    //   text: '最近更新于',
-    //   formatOptions: {
-    //     dateStyle: 'full',
-    //     timeStyle: 'medium'
-    //   }
-    // },
+    lastUpdated: {
+      text: '最近更新于',
+      formatOptions: {
+        dateStyle: 'full',
+        timeStyle: 'medium'
+      }
+    },
     logo: '/logo3.png',
     nav: [
       { text: '首页', link: '/' },
