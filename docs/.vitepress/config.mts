@@ -65,12 +65,8 @@ export default defineConfig({
               { text: '城市管网项目', link: '/md/fastproject/pipeProject' },
             ]
           },
-
         ]
       },
-      // {
-      //   text: '在线示例项目', link: '/docs/md/fastproject/index'
-      // },
       {
         text: '1.5.1', items: [
           { text: '版本更新', link: 'http://192.168.0.6:3000/cxyjy_zhjz/npm-unicore-sdk/commits/branch/main' }
