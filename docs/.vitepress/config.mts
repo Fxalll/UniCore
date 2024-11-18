@@ -4,7 +4,6 @@ export default defineConfig({
   title: "通用图形引擎",
   description: "为 GIS + BIM 应用而生的通用图形引擎",
   head: [
-    // 添加图标
     ["link", { rel: "icon", href: "/logo3.png" }],
   ],
   themeConfig: {
