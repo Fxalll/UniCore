@@ -252,3 +252,28 @@ accessToken 可联系开发者获取 Token 获取方法，下面为测试 token 
 // 关闭抗锯齿
 uniCore.viewer.scene.postProcessStages.fxaa.enabled = false
 ```
+
+#### 关闭地形功能
+
+你可以在初始化 Unicore 时关闭地形功能，使用平坦的底图。
+
+通过：
+
+```js
+uniCore.init("unicoreContainer", false);
+```
+
+随即使用以下代码添加自己的底图（你可以将下列代码涉及的底图更换成其他的底图）：
+
+```js
+viewer.imageryLayers.addImageryProvider(new Cesium.UrlTemplateImageryProvider({
+  url: "https://webst02.is.autonavi.com/appmaptile?style=6&x={x}&y={y}&z={z}",
+  layer: "tdtVecBasicLayer",
+  style: "default",
+  format: "image/png",
+  tileMatrixSetID: "GoogleMapsCompatible",
+  maximumLevel: 18,
+  minimumLevel: 1,
+  show: true,
+}));
+```
