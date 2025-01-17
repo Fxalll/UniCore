@@ -18,11 +18,13 @@ UniCore 内置 Interact 类，提供 setTilesRightClickMenu 方法用于开启 3
 
 ```js
 /**
- * 右键菜单功能
+ * 3DTiles 右键菜单功能
  * @param {*} modelList 
- * @param {*} showPropertyFunc 右键菜单回调方法 默认为null
+ * @param {*} showPropertyFunc 右键菜单查看属性回调方法 默认为null
+ * @param {*} showFunc 右键菜单即触发回调方法 默认为null
  * @param {*} switchBIMFunc 切换到BIM场景时触发回调方法 默认为null
  * @param {*} switchGISFunc 切换到GIS场景时触发回调方法 默认为null
+ * @param {*} leftClickFunc 左键点击事件 默认为null
  * @param {*} ignoreItem 定制右键菜单
  */
 ```
@@ -159,11 +161,12 @@ uniCore.interact.setTilesRightClickMenu([{
 你可以使用 ignoreItem 定制右键菜单。假如你要隐藏“构件删除”这一项，可以如下编辑代码：
 ```js
 uniCore.interact.setTilesRightClickMenu(
-  [xxx],
+  [...],
   (property) => console.log(property),
   (pickObj) => console.log(`右键获取该构件: ${pickObj}`),
   (pickObj) => console.log(`已切换至BIM场景: ${pickObj}`), 
   (pickObj) => console.log(`已切换至GIS场景: ${pickObj}`),
+  (pickObj) => console.log(`左键获取该构件: ${pickObj}`),
   ['构件删除']
   );
 ```
