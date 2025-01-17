@@ -166,7 +166,7 @@ uniCore.interact.setTilesRightClickMenu(
   (pickObj) => console.log(`右键获取该构件: ${pickObj}`),
   (pickObj) => console.log(`已切换至BIM场景: ${pickObj}`), 
   (pickObj) => console.log(`已切换至GIS场景: ${pickObj}`),
-  (pickObj) => console.log(`左键获取该构件: ${pickObj}`),
+  (property) => console.log(`左键获取该构件: ${property}`),
   ['构件删除']
   );
 ```
