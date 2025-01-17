@@ -125,3 +125,11 @@ uniCore.model.setPrimitivesShow('城市白膜2')
 ```js
 uniCore.model.setPrimitivesShow(['城市白膜', '城市白膜2'])
 ```
+
+#### 结合地形挖地可能出现的问题
+
+如果在使用本功能时会导致地形挖地也被连带隐藏了，可以加入 ignore 参数 ['地形挖地底面', '地形挖地墙体'] 规避：
+
+```js
+uniCore.model.setPrimitivesShow(['城市白膜', '城市白膜2'], false, true, ['地形挖地底面', '地形挖地墙体'])
+```
