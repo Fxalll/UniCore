@@ -66,7 +66,7 @@ export default defineConfig({
         ]
       },
       {
-        text: '1.5.3', items: [
+        text: '1.5.4', items: [
           { text: '版本更新', link: 'http://192.168.0.6:3000/cxyjy_zhjz/npm-unicore-sdk/commits/branch/main' }
         ]
       }

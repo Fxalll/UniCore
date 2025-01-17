@@ -23,6 +23,7 @@ UniCore 内置 Interact 类，提供 setTilesRightClickMenu 方法用于开启 3
  * @param {*} showPropertyFunc 右键菜单回调方法 默认为null
  * @param {*} switchBIMFunc 切换到BIM场景时触发回调方法 默认为null
  * @param {*} switchGISFunc 切换到GIS场景时触发回调方法 默认为null
+ * @param {*} ignoreItem 定制右键菜单
  */
 ```
 
@@ -152,3 +153,19 @@ uniCore.interact.setTilesRightClickMenu([{
 ### 拓展
 
 你可以使用 [模型属性窗口组件](../fastcomponents/modelPropertyInfo.md) 快速创建一个模型窗口。
+
+#### 定制右键菜单
+
+你可以使用 ignoreItem 定制右键菜单。假如你要隐藏“构件删除”这一项，可以如下编辑代码：
+```js
+uniCore.interact.setTilesRightClickMenu(
+  [xxx],
+  (property) => console.log(property),
+  (pickObj) => console.log(`右键获取该构件: ${pickObj}`),
+  (pickObj) => console.log(`已切换至BIM场景: ${pickObj}`), 
+  (pickObj) => console.log(`已切换至GIS场景: ${pickObj}`),
+  ['构件删除']
+  );
+```
+
+目前可定制的选项除了构件删除，还有构件属性、构件隔离、场景还原、切换至 GIS 场景。
