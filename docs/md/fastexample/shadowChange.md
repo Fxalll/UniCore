@@ -25,7 +25,7 @@ UniCore 内置 Model 类，提供 shadowChange 方法用于开启或关闭阴影
 
 ### 在线演示
 
-点击 [在线链接](http://192.168.4.56:8091/?id=shadowChange) 以查看在线演示。
+点击 [在线链接](http://192.168.4.66:8091/?id=shadowChange) 以查看在线演示。
 
 ### 代码示例
 

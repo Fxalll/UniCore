@@ -31,7 +31,7 @@ UniCore 内置 Model 类，提供 createMaterialLine 方法用于创建动态线
 
 ### 在线演示
 
-点击 [在线链接](http://192.168.4.56:8091/?id=createMaterialLine) 以查看在线演示。
+点击 [在线链接](http://192.168.4.66:8091/?id=createMaterialLine) 以查看在线演示。
 
 ### 代码示例
 

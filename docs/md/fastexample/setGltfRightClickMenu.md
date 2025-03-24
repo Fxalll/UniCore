@@ -29,7 +29,7 @@ UniCore 内置 Interact 类，提供 setGltfRightClickMenu 方法用于开启 gl
 
 ### 在线演示
 
-点击 [在线链接](http://192.168.4.56:8091/?id=setGltfRightClickMenu) 以查看在线演示。
+点击 [在线链接](http://192.168.4.66:8091/?id=setGltfRightClickMenu) 以查看在线演示。
 
 ### 代码示例
 
