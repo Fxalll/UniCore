@@ -141,3 +141,38 @@ uniCore.model.addGltf({
     uniCore.model.changeModelPos(cityModel, [113.12098820449636, 28.256150218457687, 50], [90, 0, 0])
   })
 ```
+
+### 改变模型着色器（如亮度）
+
+通过将关键代码中的加载 glTF 部分修改为以下代码，即可利用回调函数改变模型着色器（如亮度）。调整代码中的 `material.diffuse * (1.0)` 的 `1.0` 数值可调整模型亮度。你也可以尝试使用更多不同的着色器代码修改模型显示效果。
+
+```js
+uniCore.model.addGltf({
+    lon: 0,
+    lat: 0,
+    height: 0
+  }, {
+    id: id,
+    name: null,
+    url: url,
+    scale: 1,
+    property: null
+}).then(cityModel => {
+    // 着色器代码
+    let customShader = new Cesium.CustomShader({
+      // lightingModel: Cesium.LightingModel.UNLIT,
+      lightingModel: Cesium.LightingModel.PBR,
+
+      //片元着色器
+      fragmentShaderText: `
+    void fragmentMain(FragmentInput fsInput, inout czm_modelMaterial material) {
+      vec3 positionMC = fsInput.attributes.positionMC;
+      //此处以下为光线效果
+      material.diffuse += material.diffuse * (3.0);
+    }`
+    })
+
+    // 插入着色器代码
+    cityModel.customShader = customShader
+})
+```
