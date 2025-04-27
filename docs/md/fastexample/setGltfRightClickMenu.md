@@ -2,7 +2,7 @@
 outline: deep
 ---
 
-# 开启 3DTiles 模型交互事件
+# 开启 glTF 模型交互事件
 
 ## Interact 类的方法 - setGltfRightClickMenu
 
