@@ -541,3 +541,17 @@ const centerAxis = [113.12143453385162, 28.256011465656002, 46];
 const range = 100;
 this.$refs.bcSetId.show(uniCore, centerAxis, range);
 ```
+
+### 适配glTF模型
+
+你只需要将：
+
+```js
+(pickObj) => this.$refs.bcSetId.show(uniCore, uniCore.position.cartesian3_2axis(pickObj.tileset.boundingSphere.center), pickObj.tileset.boundingSphere.radius * 3)
+```
+
+修改为：
+
+```js
+(pickObj) => this.$refs.bcSetId.show(uniCore, uniCore.position.cartesian3_2axis(pickObj.detail.model.boundingSphere.center), pickObj.detail.model.boundingSphere.radius * 3)
+```
