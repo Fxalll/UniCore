@@ -142,6 +142,25 @@ uniCore.model.addGltf({
   })
 ```
 
+### 通过阴影增强模型质感
+
+推荐你使用阴影增强模型质感，你可以将以下代码拷贝运行，根据情况调整参数：
+
+```js
+let viewer = window.viewer;
+viewer.shadows = true;
+viewer.scene.shadowMap.maximumDistance = 5000; // 扩大阴影投射范围
+viewer.scene.shadowMap.softShadows = true;     // 启用柔和阴影
+viewer.shadowMap.darkness = 0.8;  // 0.0纯黑 → 1.0无阴影
+viewer.shadowMap.color = new Cesium.Color(0.1, 0.1, 0.1, 0.8); // RGB+透明度
+viewer.shadowMap.softShadows = true;
+viewer.shadowMap.size = 4096;     // 阴影贴图分辨率提升
+viewer.shadowMap.numShadowCascades = 4; // 级联阴影层级
+viewer.shadowMap.cascadeSplitDistance = [0.1, 0.2, 0.5, 1.0];
+viewer.shadowMap.fadeOverlap = 0.3; // 级间过渡平滑度
+viewer.scene.skyAtmosphere.luminanceAtZenith = 2.0; // 天顶亮度增强
+```
+
 ### 改变模型着色器（如亮度）
 
 通过将关键代码中的加载 glTF 部分修改为以下代码，即可利用回调函数改变模型着色器（如亮度）。调整代码中的 `material.diffuse * (1.0)` 的 `1.0` 数值可调整模型亮度。你也可以尝试使用更多不同的着色器代码修改模型显示效果。
