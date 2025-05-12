@@ -488,3 +488,240 @@ uniCore.interact.setTilesRightClickMenu([{
   propertysURL: '../../assets/3Dtiles/sample3_方法2_小别墅属性(1)/01 小别墅.json'
 }], (property) => this.$refs.mpInfoId.showProps(property));
 ```
+
+### 新 UI 更换
+
+你也可以修改组件代码，使用新的 UI。本示例提供另一种 UI 展示：
+
+![Alt text](image-35.png)
+
+#### 新 UI 组件代码示例
+
+默认路径为 `components/modelPropertyInfo/index.vue`
+
+```js
+<template>
+  <div>
+    <el-card class="box-card" v-show="tilespanelShow">
+      <div class="tilespanel" style="z-index: 999999; left: 10px">
+        <div class="tilesclose" @click="tilespanelShow = !tilespanelShow">
+          收起
+        </div>
+        <div class="tilespanel-body">
+          <div class="tilespanel-tips">"请选择一个构件，以查看属性"</div>
+          <div class="cards-container scroll-bar">
+            <!-- 核心属性卡片 -->
+            <div v-if="coreAttributes.length" class="attribute-card">
+              <div class="card-title">核心属性</div>
+              <div class="card-content">
+                <div
+                  v-for="attr in coreAttributes"
+                  :key="attr.key"
+                  class="attribute-item"
+                >
+                  <span class="key">{{ attr.key }}：</span>
+                  <span class="value">{{ attr.value }}</span>
+                </div>
+              </div>
+            </div>
+            <!-- 属性集卡片 -->
+            <div
+              v-for="pset in propertySets"
+              :key="pset.pset_name"
+              class="attribute-card"
+            >
+              <div class="card-title" @click="toggleCard">
+                ▶ {{ pset.pset_name }}
+              </div>
+              <div class="card-content">
+                <div
+                  v-for="prop in pset.properties"
+                  :key="prop.name"
+                  class="attribute-item"
+                >
+                  <span class="key">{{ prop.name }}：</span>
+                  <span class="value">{{ prop.cleanValue }}</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="resize"></div>
+      </div>
+    </el-card>
+  </div>
+</template>
+
+<script>
+import $ from 'jquery';
+
+export default {
+  data () {
+    return {
+      tilespanelShow: false,
+      coreAttributes: [],
+      propertySets: []
+    };
+  },
+  methods: {
+    showProps (node) {
+      node = node[0];
+      const panel = $('.tilespanel');
+      const panel_tips = panel.find('.tilespanel-tips');
+
+      if (node) {
+        panel_tips.hide();
+
+        // 处理核心属性
+        this.coreAttributes = ['GlobalId', 'IfcType', 'Name', 'Tag', 'ObjectType', 'Description', 'CompositionType']
+          .filter(attr => node.attributes[attr])
+          .map(attr => ({ key: attr, value: node.attributes[attr] }));
+
+        // 处理属性集
+        this.propertySets = node.property_sets.map(pset => ({
+          pset_name: pset.pset_name,
+          properties: pset.properties.map(prop => ({
+            name: prop.name,
+            cleanValue: prop.value
+              .replace(/Ifc\w+$['"]?(.+?)['"]?$/g, '$1')
+              .replace(/\.(T|F)\./g, match => match === '.T.' ? '是' : '否')
+          }))
+        }));
+
+        this.tilespanelShow = true;
+      } else {
+        panel_tips.show();
+      }
+    },
+    toggleCard (event) {
+      const $card = $(event.target).closest('.attribute-card');
+      $card.find('.card-content').slideToggle(200, 'swing', () => {
+        $card.toggleClass('active-card');
+      });
+    },
+
+  }
+};
+</script>
+
+<style lang="scss" scoped>
+.cards-container {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  max-height: 75vh;
+}
+
+.attribute-card {
+  padding: 0 15px;
+  background: rgba(255, 255, 255, 0.9);
+  // border: 1px solid #4a4a4a;
+  border-radius: 8px;
+  backdrop-filter: blur(5px);
+  transition: all 0.3s ease;
+
+  .card-title {
+    padding: 12px;
+    font-weight: 500;
+    color: #2d68ff;
+    border-bottom: 1px solid #55555545;
+    cursor: pointer;
+    transition: background 0.2s;
+
+    &:hover {
+      background: rgba(255, 255, 255, 0.05);
+    }
+  }
+
+  .card-content {
+    padding: 8px 12px;
+    max-height: 400px;
+    overflow-y: auto;
+  }
+
+  .attribute-item {
+    display: flex;
+    justify-content: space-between;
+    padding: 8px 0;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+
+    &:last-child {
+      border-bottom: none;
+    }
+
+    .key {
+      font-weight: 700;
+      // color: #9e9e9e;
+    }
+
+    .value {
+      color: #4e4e4e;
+      flex: 1;
+      text-align: right;
+      word-break: break-word;
+    }
+  }
+
+  &.active-card {
+    .card-title {
+      background: rgb(255 255 255 / 45%);
+    }
+  }
+}
+
+/* 对于Chrome和Safari浏览器 */
+.box-card::-webkit-scrollbar {
+  display: none;
+}
+.card-content::-webkit-scrollbar {
+  display: none;
+}
+
+.card-content {
+  font-size: 14px;
+}
+
+::v-deep .box-card {
+  position: absolute;
+  top: 0;
+  right: 0;
+  height: calc(100% - 20px);
+  width: 420px;
+  background: #ffffff00;
+  border: none;
+  box-shadow: none !important;
+  overflow-y: scroll;
+  z-index: 999;
+
+  .tilespanel {
+    height: 85vh;
+  }
+
+  .scroll-bar {
+    &::-webkit-scrollbar {
+      width: 6px;
+    }
+  }
+}
+
+.tilesclose {
+  position: fixed;
+  right: 0px;
+  width: 70px;
+  font-size: 12px;
+  margin: 10px 12px;
+  padding: 5px 0;
+  color: #ffffff;
+  background: rgb(45 104 255 / 58%);
+  /* border: 1px solid #ffffff; */
+  border-radius: 8px;
+  backdrop-filter: blur(5px);
+  z-index: 999;
+  cursor: pointer;
+}
+
+.tilesclose:hover {
+  background: #1451ec;
+}
+</style>
+```
