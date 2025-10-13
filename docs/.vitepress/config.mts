@@ -171,6 +171,7 @@ export default defineConfig({
               { text: '模型剖切组件', link: '/md/fastcomponents/ModelCutSet' },
               { text: 'BIM 场景视图盒子组件', link: '/md/fastcomponents/BimCubeSet' },
               { text: '路径漫游控制组件', link: '/md/fastcomponents/CreateTourSet' },
+              { text: '第一人称自由漫游控制组件', link: '/md/fastcomponents/WanderMode' },
               { text: 'GIS / BIM 切换组件', link: '/md/fastcomponents/GisBimSwitch' },
               { text: '模型编辑组件', link: '/md/fastcomponents/AdjustModelSet' },
               { text: '模型信息树组件', link: '/md/fastcomponents/ModelTreeSet' },
