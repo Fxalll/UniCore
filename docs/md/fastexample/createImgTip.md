@@ -145,3 +145,7 @@ uniCore.tip.createImgTip('图片标签', "../static/img/ui/shezhi.png", [113.122
 ### 拓展
 
 你可以在 `window.viewer.entities._entities._array` 中找到图片标签的 entities 。
+
+### 可能存在的问题
+
+在有的项目可能会遇到部署后无法显示标签的问题，可以使用 `createTip` 方法代替。
