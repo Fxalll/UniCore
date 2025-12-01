@@ -148,4 +148,4 @@ uniCore.tip.createImgTip('图片标签', "../static/img/ui/shezhi.png", [113.122
 
 ### 可能存在的问题
 
-在有的项目可能会遇到部署后无法显示标签的问题，可以使用 `createTip` 方法代替。
+在有的项目可能会遇到部署后无法显示标签的问题，是由于不兼容 Entity API 的原因。可以使用 `createTip` 方法代替，或自行使用 Cesium 的 Primitive API 解决。
