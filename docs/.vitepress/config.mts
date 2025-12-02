@@ -231,7 +231,23 @@ export default defineConfig({
           },
         ],
         collapsed: false
-      }, {
+      },
+
+      {
+        text: '场景视效优化',
+        items: [
+          {
+            text: '地球视效',
+            items: [
+              { text: '全球体积云', link: '/md/fastshaders/VolumetricClouds' },
+            ],
+            collapsed: false
+          },
+        ],
+        collapsed: false
+      },
+
+      {
         text: 'API文档',
         items: [
           { text: 'Model', link: '/md/fastapi/Model' },
