@@ -74,10 +74,6 @@ export default defineConfig({
     search: {
       provider: 'local'
     },
-    footer: {
-      message: 'v0.1.0 created by 智慧建造研究部',
-      copyright: 'Copyright © 2024-present 广州粤建三和软件股份有限公司'
-    },
     sidebar: [
       {
         text: '简介',
