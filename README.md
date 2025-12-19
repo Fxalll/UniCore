@@ -7,7 +7,7 @@
 <h3 align="center">为 GIS + BIM 应用而生的通用图形引擎</h3>
 
 <p align="center">
-  <a href="https://www.npmjs.com/package/unicore-sdk"><img src="https://img.shields.io/npm/v/unicore-sdk?style=flat&logo=npm&label=版本号" alt="NPM Version"></a>
+  <a href="https://www.npmjs.com/package/unicore-sdk"><img src="https://img.shields.io/npm/v/unicore-sdk?style=flat&logo=npm&label=version" alt="NPM Version"></a>
   <a href="#"><img src="https://img.shields.io/badge/license-MIT-green.svg" alt="License"></a>
 </p>
 
@@ -20,6 +20,8 @@
 UniCore（通用图形引擎）是一个基于 Web 端开发的图形引擎，专为 GIS（地理信息系统）应用与 BIM（建筑信息模型）应用而设计。
 
 不同于市面上的 BIM 图形引擎与 GIS 图形引擎，通用图形引擎致力于将 BIM 场景与 GIS 场景结合，不仅能支持建筑信息模型（BIM）的加载、交互和展示，还能与地理信息系统（GIS）进行深度融合。
+
+本仓库为 UniCore 的开发文档展示，不含源码。你可以直接使用 NPM 获得 UniCore。
 
 ### 核心特性
 
