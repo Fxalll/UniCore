@@ -143,7 +143,6 @@ export default {
       yAngle: 0,
       zAngle: 0,
       selectedNodeName: "1大臂",
-      currentModel: null,
       currentNodes: {},
       currentTween: [], // 存储所有正在运行的 tween 实例数组，支持并行旋转
       isAnimating: false, // 控制动画循环的标志
@@ -219,7 +218,7 @@ export default {
           });
 
           // 存储模型以供使用
-          this.currentModel = armModel;
+          window.currentModel = armModel;
 
           // 设置默认选中的节点
           this.selectedNodeName = this.nodeNames[0] || "";
@@ -255,9 +254,9 @@ export default {
       }
 
       // 清理模型
-      if (this.currentModel && this.viewer) {
-        this.viewer.scene.primitives.remove(this.currentModel);
-        this.currentModel = null;
+      if (window.currentModel && window.viewer) {
+        window.viewer.scene.primitives.remove(window.currentModel);
+        window.currentModel = null;
       }
 
       // 清空节点
@@ -269,8 +268,8 @@ export default {
      * @param {Array} position - [lon, lat, height]
      */
     updateModelPosition (position) {
-      if (this.currentModel && this.viewer) {
-        this.viewer.model.changeModelPos(this.currentModel, position);
+      if (window.currentModel && window.viewer) {
+        window.viewer.model.changeModelPos(window.currentModel, position);
       }
     },
 
@@ -279,8 +278,8 @@ export default {
      * @param {Number} scale - 缩放比例
      */
     updateModelScale (scale) {
-      if (this.currentModel) {
-        this.currentModel.scale = scale;
+      if (window.currentModel) {
+        window.currentModel.scale = scale;
       }
     },
 
@@ -606,7 +605,7 @@ export default {
      * @returns {Object} 模型对象
      */
     getModel () {
-      return this.currentModel;
+      return window.currentModel;
     },
 
     /**
