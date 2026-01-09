@@ -787,21 +787,27 @@ async executeArmAnimation () {
     // 依次执行旋转动画
     await this.$refs.armControl.rotateByStep(-45, "1大臂");
     await this.$refs.armControl.rotateByStep(-75, "1大臂");
+    await Promise.all([
     this.$refs.armControl.rotateByStep(35, "3大臂");
     this.$refs.armControl.rotateByStep(720, "6旋转");
     this.$refs.armControl.rotateByStep(75, "5小臂");
     this.$refs.armControl.rotateByStep(75, "4双叉臂");
     this.$refs.armControl.rotateByStep(15, "10夹爪1");
     this.$refs.armControl.rotateByStep(15, "10夹爪2");
+    ])
     await this.delay(600);
+    await Promise.all([
     this.$refs.armControl.rotateByStep(-15, "10夹爪1");
     this.$refs.armControl.rotateByStep(-15, "10夹爪2");
+    ])
     await this.delay(600);
+    await Promise.all([
     this.$refs.armControl.rotateByStep(-35, "2大臂");
     this.$refs.armControl.rotateByStep(-15, "3大臂");
     this.$refs.armControl.rotateByStep(-45, "5小臂");
     this.$refs.armControl.rotateByStep(-60, "4双叉臂");
     this.$refs.armControl.rotateByStep(90, "6旋转");
+    ])
 
     console.log('机械臂动画序列执行完成');
   } catch (error) {
@@ -809,3 +815,5 @@ async executeArmAnimation () {
   }
 },
 ```
+
+注意，使用 await 可以让动画按顺序依次进行。如果想要多个动画同时进行，你需要使用 Promise.all 包裹多个需要同时进行的动画。这样即使浏览器标签页失焦、动画一度被暂停，回到页面时，当前批次的所有关节会先补完到应到的位置，然后才进入下一批，不会出现“有些关节没跑完、后面的动作又叠上去”的问题。
